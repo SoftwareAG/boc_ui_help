@@ -1,0 +1,512 @@
+[
+    {
+        "ta-viewing_channels": {
+            "Name": "Name of the channel that you created.",
+            "Type": "Type of channel.\n- Inbound. A method for receiving a document from a partner.\n- Outbound. A method for sending a document to a partner.",
+            "Description": "Description you typed to indicate the purpose of the channel.",
+            "Status": "Status of the channel. The possible statuses are:\n- Active\n- Inactive",
+            "Actions": "Perform actions such as delete and edit."
+        }
+    },
+    {
+        "re-supported_channels": {
+            "Applicability Statement 2 IN": "Incoming messages are received using an AS2 connection and processed as soon as they are received.",
+            "Applicability Statement 2 OUT": "Outgoing messages are transmitted using an AS2 connection.",
+            "Applicability Statement 4 IN": "Incoming messages are received using an AS4 connection and processed as soon as they are received.",
+            "Applicability Statement 4 OUT": "Outgoing messages are transmitted using an AS4 connection.",
+            "Hyper Text Transfer Protocol IN": "Incoming messages are received as HTTP Post on the webMethods.io B2B HTTP server and processed as soon as they arrive.",
+            "Hyper Text Transfer Protocol OUT": "Outgoing messages are sent using an HTTP connection.",
+            "RNIF IN": "Incoming messages are received using an RNIF connection.",
+            "RNIF OUT": "Outgoing messages are sent using an RNIF connection.",
+            "SFTP-IN-CLIENT": "Incoming messages are received using an SFTP connection.",
+            "SFTP-OUT-CLIENT": "Outgoing messages are sent using an SFTP connection."
+        }
+    },
+    {
+        "AS2-IN": {
+            "Accept signed or signed-encrypted messages": "Select to receive inbound AS2 messages that are either signed or signed and encrypted.\nIf you select this option and the inbound messages are not signed or signed and encrypted, then an Insufficient message security error appears for those transactions in the Course of transaction section. This error also appears in the MDN if the sender requests one.\nDisabled by default",
+            "Accept encrypted or signed-encrypted messages": "Select to receive inbound AS2 messages that are encrypted or signed and encrypted.\nIf you select this option and the inbound messages are not encrypted or signed and encrypted, then an Insufficient message security error appears for those transactions in the Course of transaction section. This error also appears in the MDN if the sender requests one.\nDisabled by default\nNote: If both Accept signed or signed-encrypted messages and Accept encrypted or signed-encrypted messages are enabled, the channel receives inbound messages that are both signed and encrypted."
+        }
+    },
+    {
+        "AS2-IN_FF": {
+            "Key": "Specify a valid key to identify the Flat File document type. For example, a filename",
+            "Value": "Specify the corresponding value for the Key that was defined. For example, sample.txt."
+        }
+    },
+    {
+        "AS2-OUT": {
+            "Connection Settings": "",
+            "Endpoint": "Endpoint URL used to send AS2 messages to partners. You can either use an HTTP or HTTPS URL depending on your need.\nIf you use HTTPS, ensure that the corresponding SSL certificate is configured in the sender’s profile.\nThe URL must have the protocol, hostname, port (optional) and the complete path.\nFor example, http://trader.com or https://trader.com",
+            "Username": "Username used to connect to the partner’s endpoint.",
+            "Password": "Password used to connect to the partner’s endpoint.",
+            "Message Settings": "",
+            "Enable message signing": "Enable to sign outbound documents with the sender’s private key.\nIf you enable signing, ensure that the sender has a corresponding certificate for the sign-verify usage. Disabled by default.",
+            "Signing algorithm": "The signing algorithm to use to sign the documents.\nSelect from the list of signing algorithms:\nMD5\nSHA-1\nSHA-256\nSHA-384\nSHA-512\n(Default)",
+            "Enable message encryption": "Enable to encrypt outbound documents using receiver’s public key.\nIf you enable encryption, ensure that the receiver has a corresponding certificate for the encrypt-decrypt usage. Disabled by default.",
+            "Encryption algorithm": "The encryption algorithm to use to encrypt the documents.\nSelect from the list of supported encryption algorithms:\nTripleDES (Default)\nRC2 40 (40 bits)\nRC2 64 (64 bits)\nRC2 128 (128 bits)\nDES\nAES 128\nAES 192\nAES 256",
+            "Enable Message Compression": "Enable to compress the outbound message. Disabled by default.",
+            "Acknowledgment Settings": "",
+            "Request MDN": "Enable to request the receiver to return an MDN. Enabled by default.",
+            "Request Signed MDN": "Enable to request the receiver to send a signed MDN. Disabled by default.",
+            "Request Asynchronous MDN": "Enable to request an asynchronous MDN. Disabled by default. If you disable the option, it means that you are requesting synchronous MDNs.",
+            "Asynchronous MDN URL": "Remote or native endpoint that accepts the asynchronous inbound MDNs.\nYou can use both HTTP and HTTPS URL to receive asynchronous MDNs.\nTo receive secured asynchronous MDNs, use an HTTPS URL.\nIf you turn on the Request Asynchronous MDN option, and do not specify an Asynchronous MDN URL, webMethods.io B2B switches to sending synchronous MDNs.\nFor example, http://tenant-id.com/b2b/routes/channel/id\nFor example, http://tenant-id.com/b2b/routes/channel/id\nFor example, https://<username\\>:<password\\>@tenant-id.com/b2b/routes/channel/id",
+            "Other Settings": "",
+            "AS2 Version": "Version of AS2 protocol that is being used to send documents to partners. The available versions are:\n1.1\n1.2 (default)",
+            "Document delivery rate": "",
+            "Enable": "Allows you to limit the rate at which documents must be delivered to the endpoint. You must persist the document in the database so this option can be used to deliver documents in a regulated manner.",
+            "Maximum number of requests per minute": "Specify the maximum number of business documents that can be delivered to the outbound channel endpoint. You can tune this rate based on the performance of the partner systems that receive the business documents on this endpoint. The default value is 1 (minimum). The maximum value is 1000."
+        }
+    },
+    {
+        "AS4-OUT": {
+            "Connection Settings": "",
+            "Defer to TPA": "Indicates whether to use the configurations from TPA.\nIf you select this option, then the configurations are selected from AS4-OUT channel. Enabled by default.",
+            "Endpoint": "Endpoint URL used to send AS4 messages to partners. You can either use an HTTP or HTTPS URL depending on your need.\nIf you use HTTPS, ensure that the corresponding SSL certificate is configured in the sender’s profile.\nThe URL must have the protocol, hostname, port (optional) and the complete path.\nFor example, http://trader.com or https://trader.com",
+            "Username": "Username used to connect to the partner’s endpoint.",
+            "Password": "Password used to connect to the partner’s endpoint."
+        }
+    },
+    {
+        "HTTP-IN": {
+            "Key": "Specify a valid key to identify the Flat File document type. For example, a filename",
+            "Value": "Specify the corresponding value for the Key that was defined. For example, sample.txt."
+        }
+    },
+    {
+        "HTTP-OUT": {
+            "Host": "Host name or IP address of the partner’s HTTP server on which the documents are sent. For example, trader.com",
+            "Port": "An active HTTP port defined on the partner’s HTTP server.",
+            "Location": "A location on the partner’s HTTP server to where the business documents are sent. For example, inbound\\invoice - on the HTTP server, this location is a path to where documents are sent by webMethods.io B2B.",
+            "Username": "Username used to connect to the partner’s HTTP server.",
+            "Password": "The password used to authenticate the user on the partner’s HTTP server.",
+            "Use SSL": "Enable to use a secured connection for exchanging documents with your partner’s HTTPS server.",
+            "Keep-alive timeout value": "Time period (in milliseconds) for which you want the server to keep an idle connection open in the client connection pool before closing it. Value must be higher than zero seconds.\nThe default value is 30000 milliseconds.",
+            "Connect timeout value": "Time (in milliseconds) period for which the server waits to connect to the remote server before timing out and therefore terminating the request.\nThe default is 30000 milliseconds.",
+            "Document delivery rate": "",
+            "Enable": "Allows you to limit the rate at which documents must be delivered to the endpoint. You must persist the document in the database so this option can be used to deliver documents in a regulated manner.",
+            "Maximum number of requests per minute": "Specify the maximum number of business documents that can be delivered to the outbound channel endpoint. You can tune this rate based on the performance of the partner systems that receive the business documents on this endpoint. The default value is 1 (minimum). The maximum value is 1000."
+        }
+    },
+    {
+        "RNIF-IN": {
+            "Message": "",
+            "Defer to TPA": "1.1 and 2.0",
+            "RNIF version": "1.1 and 2.0",
+            "Encoding": "1.1 and 2.0",
+            "Receive signed messages": "1.1 and 2.0",
+            "Synchronous response hash algorithm": "2.0",
+            "Receive encrypted messages": "2.0",
+            "Receive encrypted message header": "2.0",
+            "Synchronous response encryption algorithm": "2.0",
+            "RC2 encryption key length": "2.0",
+            "Send receipt acknowledgement": "1.1 and 2.0",
+            "Usage code": "1.1 and 2.0",
+            "PIP information": "",
+            "Sender focal role": "1.1 and 2.0",
+            "Receiver focal role": "1.1 and 2.0",
+            "Process code": "1.1 and 2.0",
+            "Process version": "1.1 and 2.0",
+            "Transaction code": "1.1 and 2.0",
+            "Response action code": "1.1 and 2.0"
+        }
+    },
+    {
+        "RNIF-OUT": {
+            "Connection": "",
+            "Endpoint": "1.1 and 2.0",
+            "Username": "1.1 and 2.0",
+            "Password": "1.1 and 2.0",
+            "Message": "",
+            "Defer to TPA": "1.1 and 2.0",
+            "RNIF version": "1.1 and 2.0",
+            "Encoding": "1.1 and 2.0",
+            "Enable message signing": "1.1 and 2.0",
+            "Hash algorithm": "1.1 and 2.0",
+            "Enable message encryption": "2.0",
+            "Enable message header encryption": "2.0",
+            "Encryption algorithm": "2.0",
+            "RC2 encryption key length": "2.0",
+            "Enable message compression": "2.0",
+            "Enable synchronous response": "2.0",
+            "Usage code": "1.1 and 2.0",
+            "Document delivery rate": "",
+            "Enable": "1.1 and 2.0",
+            "Maximum number of requests per minute": "1.1 and 2.0"
+        }
+    },
+    {
+        "SFTP-IN": {
+            "Connection": "",
+            "SFTP Client Version": "The internal SFTP client version to use to connect to the SFTP server.\nSpecify the following values for each client version you select:\n\nSFTP V1. No additional configuration information is required.\nSFTP V2. SFTP V2 is the default internal SFTP client because additional configuration properties such as Key Exchange Algorithms, Machine Access Code (MAC) algorithms, and ciphers that are not available in the Version 1 client.\nSpecify the values for additional configurations:\n\nMin Diffie-Hellman key size. The minimum Diffie-Hellman key size to use. The default minimum key size is 1024 bits.\nMax Diffie-Hellman key size. The minimum Diffie-Hellman key size to use. The default maximum key size is 8192 bits.\n\nThe Preferred MAC Algorithms list excludes hmac-sha256, hmac-sha256@ssh.com, hmac-sha512, hmac-sha512@ssh.com, hmac-ripemd160, hmac-ripemd160@openssh.com, hmac-ripemd160-etm@openssh.com as they are not supported by the latest Version 2 SFTP client.\n\nNote: You cannot change the SFTP client version after you create the channel. If your existing workflows fail because of the SFTP version mismatch, you must create a new channel with the right SFTP version.",
+            "Hostname": "Host name or IP address of the partner’s SFTP server. For example, trader.com.",
+            "Port": "An active port on the partner’s SFTP server. For example, 3456. Default is 22.\nIf the port to which the connection is being established is either invalid or not open, it results in a bad gateway error.",
+            "Host public key option": "Public key used to establish a secure connection with the partner’s SFTP server. Select from the following options:\nAuto retrieve. webMethods.io B2B automatically retrieves the public key file.\nNote: Ensure that the hostname and port are active and accessible.\nUpload. You can upload the public key file.\n\nNote: If the Host public key option for the SFTP server changes after you configure the SFTP channels, you must manually refresh (to pull the latest host public key from the SFTP server) the SFTP channels to avoid transactions from failing during runtime.",
+            "Username": "Username used to connect to the partner’s SFTP server.",
+            "Authentication type": "Type of authentication required to connect to partner’s SFTP server. Select from the following types of authentications:\nPassword\nPublic key\nwebMethods.io B2B supports only OpenSSH format to generate the public and private key pair. There is no support for SSH2 format for both public and private key pair.",
+            "Password": "If you selected Password as the authentication type, provide the password to connect to the partner’s SFTP server.",
+            "Polling": "",
+            "Folder path": "Path of the folder to which webMethods.io B2B places the files after processing. By default, webMethods.io B2B appends /processedto the folder path that you specified earlier in the Polling segment. For example, docs/por/processed.\nImportant: Ensure that the folder you specified has sufficient permissions for webMethods.io B2B to access and place the processed files.\nIn certain cases, the SFTP server might not support operations such as a file overwrite or rename. This might result in failure of the post processing action because of the inherent limitations of the underlying SFTP server. Refer to the SFTP server documentation to learn more about such limitations.\nNote: If webMethods.io B2B fails to move the files to the folder that you specified in this field, then webMethods.io B2B places the files at the default location. In this example, at docs/por/processed.",
+            "File name filter": "Filter criteria used to identify the specific files for polling. You can provide a comma separated list of filter criteria. For example, *.xml, *.txt, test_*b2b*123*.",
+            "Type of document": "The channel’s document type used to process files. Select from the following document types:\nEDI\nXML\nOther\nNote: You can only create one channel per document type.",
+            "Frequency": "Frequency at which webMethods.io B2B polls the partner’s SFTP server for new files. Specify a numeric value. Default value is 5.",
+            "Unit of frequency": "Unit of frequency specified in Frequency. Select from the following units:\nMinutes\nHours\nDays\nDefault value is 5. This makes the default polling frequency to be 5 minutes.",
+            "Post processing": "",
+            "Action": "Action to be taken by webMethods.io B2B on the files after processing them. Select one of the following actions:\nMove to folder\nDelete\nDefault is Move to folder.",
+            "Allow folder creation": "If the folder specified in the Folder path does not exist, enable this option to allow webMethods.io B2B to create a new folder with the same folder name.\nwebMethods.io B2B does not support creation of nested folders in SFTP server. For example, if docs/por is the existing folder path, then docs/por/processed is supported, whereas docs/por/processed/partners is not supported.\nNote: If the specified folder is inaccessible or if you fail to enable the Allow folder creation option, then webMethods.io B2B places the files at the default location. In this example, at docs/por/processed."
+        }
+    },
+    {
+        "SFTP-IN-FF": {
+            "Key": "Specify a valid key to identify the Flat File document type. For example, a filename.",
+            "Value": "Specify the corresponding value for the Key that was defined. For example, sample.txt."
+        }
+    },
+    {
+        "SFTP-OUT": {
+            "Connection": "",
+            "SFTP Client Version": "The internal SFTP client version to use to connect to the SFTP server.\nSpecify the following values for each client version you select:\n\nSFTP V1. No additional configuration information is required.\nSFTP V2. SFTP V2 is the default internal SFTP client because additional configuration properties such as Key Exchange Algorithms, Machine Access Code (MAC) algorithms, and ciphers that are not available in the Version 1 client.\nSpecify the values for additional configurations:\n\nMin Diffie-Hellman key size. The minimum Diffie-Hellman key size to use. The default minimum key size is 1024 bits.\nMax Diffie-Hellman key size. The minimum Diffie-Hellman key size to use. The default maximum key size is 8192 bits.\n\nThe Preferred MAC Algorithms list excludes hmac-sha256, hmac-sha256@ssh.com, hmac-sha512, hmac-sha512@ssh.com, hmac-ripemd160, hmac-ripemd160@openssh.com, hmac-ripemd160-etm@openssh.com as they are not supported by the latest Version 2 SFTP client.\n\nNote: You cannot change the SFTP client version after you create the channel. If your existing workflows fail because of the SFTP version mismatch, you must create a new channel with the right SFTP version.",
+            "Hostname": "Host name or IP address of the partner’s SFTP server. For example, trader.com.",
+            "Port": "An active port on the partner’s SFTP server. For example, 3456. Default is 22.\nIf the port to which the connection is being established is either invalid or not open, it results in a bad gateway error.",
+            "Host public key option": "Public key used to establish a secure connection with the partner’s SFTP server. Select from the following options:\nAuto retrieve. webMethods.io B2B automatically retrieves the public key file.\nNote: Ensure that the hostname and port are active and accessible.\nUpload. You can upload the public key file.\n\nNote: If the Host public key option for the SFTP server changes after you configure the SFTP channels, you must manually refresh (to pull the latest host public key from the SFTP server) the SFTP channels to avoid transactions from failing during runtime.",
+            "Username": "Username used to connect to the partner’s SFTP server.",
+            "Authentication type": "Type of authentication required to connect to partner’s SFTP server. Select from the following types of authentications:\nPassword\nPublic key\nwebMethods.io B2B supports only OpenSSH format to generate the public and private key pair. There is no support for SSH2 format for both public and private key pair.",
+            "Password": "If you selected Password as the authentication type, provide the password to connect to the partner’s SFTP server.",
+            "Private key": "If you selected Public key as the authentication type, upload the private key file required to connect to the partner’s SFTP server.",
+            "Passphrase": "If you selected Public key as the authentication type, provide the passphrase used to protect the private key.",
+            "Destination details": "",
+            "Folder path": "The path of the folder into which webMethods.io B2B places the files.",
+            "Allow folder creation": "If the folder specified in the Folder path does not exist, enable this option to allow webMethods.io B2B to create a new folder with the same folder name.\nwebMethods.io B2B does not support creation of nested folders in the SFTP server. For example, if docs/por is the existing folder path, then docs/por/processed is supported, whereas docs/por/processed/partners is not supported.\n",
+            "File name prefix": "Prefix to add to the file name. Default value is wmiob2b. webMethods.io B2B constructs the file name by combining the prefix and timestamp. Thus, the file name format is: prefix\\_<current\\_timestamp in YYYYMMDDhhmmssSSS format\\>. For example, wmiob2b_20200623062905325.",
+            "Document delivery rate": "",
+            "Enable": "Allows you to limit the rate at which documents must be delivered to the endpoint. You must persist the document in the database, so this option can be used to deliver documents in a regulated manner.",
+            "Maximum number of requests per minute": "Specify the maximum number of business documents that can be delivered to the outbound channel endpoint. You can tune this rate based on the performance of the partner systems that receive the business documents on this endpoint. The default value is 1 (minimum). The maximum value is 1000."
+        }
+    },
+    {
+        "ta-add_partner": {
+            "Name": "Specify a partner name. Ensure that the combination of partner name and organization unit is unique.",
+            "Organization Unit (optional)": "Specify the organization unit for which partner profile is being set up."
+        }
+    },
+    {
+        "ta-add_partner": {
+            "Identities": "Add additional identities to identify the partners.",
+            "Users": "Associate users from the list of available users.",
+            "Inbound Channels": "Associate an inbound channel to receive documents from partners.",
+            "Outbound Channels": "Associate an outbound channel to send document to partners.",
+            "Contacts": "Add contact details for the partners to contact you.",
+            "Addresses": "Add addresses of all the business locations that you want your partners to know.",
+            "Certificates": "Add certificates for all partners that act as senders and receivers of documents."
+        }
+    },
+    {
+        "ta-add_certificate": {
+            "Sign - Verify": "To sign a document or verify the digital signature.\nIn the sender’s profile, webMethods.io B2B uses the private key associated with the receiver to digitally sign documents.\nwebMethods.io B2B checks the sender’s profile to use the sender’s public certificate that is associated with receiver to verify the document that was digitally signed by the sender",
+            "Encrypt - Decrypt": "To decrypt or encrypt documents.\nIn the receiver’s profile, webMethods.io B2B uses public certificate associated with the receiver to encrypt information.\nwebMethods.io B2B checks the receiver’s profile for the private key associated with the sender to decrypt document",
+            "SSL": "Certificate that enables webMethods.io B2B to act as an SSL client and connect to a remote secure server.\nIf you enable this usage to send documents, upload a valid private key in the sender’s profile.\nThe supported private key file extensions are .cer, .der, .pk,.pkcs8, and .key"
+        }
+    },
+    {
+        "ta-2way_ssl_certificate_usecase": {
+            "Upload new certificate": "Click Upload to add an existing 2-Way SSL/TLS certificate. The certificate is validated and then applied for all the upcoming interactions.",
+            "Generate certificate": "Click Generate to create a 2-Way SSL/TLS certificate for the partner. While generating the certificate, the partner information you already added is auto filled. See Source of Information Auto-Filled During Certificate Generation for more information. You can also modify the partner information for the purpose of generating the certificate, but the modification does not affect the partner information in the partner profile.\nUncheck the field, if you do not want to include any field information in the certificate.\nA 2-Way SSL/TLS certificate can be generated in .jks, .pfx, and .p12 formats.\nA copy of the certificate is automatically downloaded to your system along with the public and private key. webMethods.io B2B does not store the private key of the generated certificates. Only a copy of the public certificate remains with the system to perform authentications of inbound business documents. You can replace the certificate by uploading a new one.\nNote: The default password for the generated certificate is changeit. Software AG recommends that you change this default password."
+        }
+    },
+    {
+        "ta-2way_ssl_certificate_usecase": {
+            "Common Name": "Server name or host name, for example, www.softwareag.com",
+            "Organization": "Partner > Organization unit",
+            "Organizational Unit": "Partner > Profile name",
+            "Locality": "Partner > Contact (Administrative type) > City",
+            "State Or Province Name": "Partner > Contact (Administrative type) > State/Province",
+            "Country Name": "Partner > Contact (Administrative type) > Country",
+            "Email": "Partner > Contact (Administrative type) > Email"
+        }
+    },
+    {
+        "ta-configuring_reliable_delivery_for_partner": {
+            "Maximum number of retry attempts": "Number of times to try to redeliver a document to the partner. Specify an integer greater than 0.",
+            "Wait between retries": "The number of milliseconds to wait before trying to redeliver the document for the first time. Specify an integer greater than 0.",
+            "Retry factor": "The factor to use when determining how long to wait before making subsequent attempts to redeliver the document. webMethods.io B2B calculates the time to wait by multiplying the last wait time by the Retry Factor.\nSpecify an integer greater than zero. The following example shows sample values for the reliable delivery settings and how they affect the wait times between attempts to redeliver a document.\nMaximum number of retry attempts = 3\nWait Between Retries = 10000 ms\nRetry Factor = 2\nWait until next attempt:\nRetry attempt 1: 10000 ms\nRetry attempt 2: 20000 ms\nRetry attempt 3: 40000 ms"
+        }
+    },
+    {
+        "ta-suspending_or_resuming_document_delivery": {
+            "Immediate delivery method": "Delivery tasks for the partner are assigned to Held status and webMethods.io B2B does not try to deliver documents. When delivery is resumed for the partner, webMethods.io B2B changes the status to Pending and resumes trying to deliver documents.",
+            "Scheduled delivery method": "Delivery tasks for the partner are assigned Held status and webMethods.io B2B does not try to deliver documents. When delivery is resumed for the partner, webMethods.io B2B changes the status to Queued and resumes trying to deliver documents."
+        }
+    },
+    {
+        "ta-define_control_number_partner": {
+            "Sender": "Sending partner’s full corporation name.\nThis would be populated with the partners name if you have selected Add Control Number > Partner as sender",
+            "Receiver": "Receiving partner’s full corporation name.\nThis would be populated with the partners name if you have selected Add Control Number > Partner as receiver",
+            "Standard": "The EDI standard of the documents in which to use the control number.\nSelect one of the following from the list: EANCOM, ODETTE, TRADACOMS, UCS, UNEDIFACT, VICS, X12.",
+            "Version": "Optional. The version of the EDI standard selected.\nFor example, for an ANSI X12 or UNEDIFACT interchange the version might be 00401 and for a group it might be 4010. For a TRADACOMS batch or transmission, the version can only be 1. For a TRADACOMS file, specify the version of the file document type.\nNote:\nWhen you select TRADACOMS as Standard the Version field is text box and you can type required value.\nWhen you select TRADACOMS as Standard and Envelop as the Group, the version value in the Version field is auto-populated as 1.",
+            "Group": "Specifies whether the control number is to be used for an interchange (or transmission) header or a group (or batch) header.\nPossible values are:\nAll. If you are adding a control number that is to be used for all group-level documents.\nEnvelop. If you are adding a control number for an interchange-level (or transmission-level) document.\nCustom. If you are adding a control number for a specific group type.",
+            "Group name": "This field is enabled when you select Custom in the Group field. It specifies the name of the group.\nFor example, for group-level (or batch-level) document that has a specific group type you can provide the following:\nFor non-TRADACOMS documents, provide the name of the group. For example, PO or IN.\nFor TRADACOMS documents, the name of the batch or file type. For example, NVHDR or ORDHDR.",
+            "Production mode": "The production mode associated with the interchange or group (or transmission or batch) header for which to use the control number.\nPossible values are:\nProduction\nTest\nCustom\nNote: For TRADACOMS the only valid value is Production."
+        }
+    },
+    {
+        "ta-define_control_number_partner": {
+            "Duplicate detection window": "Indicates a range of numbers that webMethods.io B2B uses to determine whether a number is duplicate or out-of-sequence.\nDefault value is 100.\nThis value should be less than half the difference between the maximum and minimum value specified, that is:\nDuplicate detection window < (maximum-minimum)/2\nNote: This is not applicable to outbound documents.",
+            "Next control number": "The next control number that you expect for the interchange or group (or transmission or batch) to use.\nDefault value is 1.\nThe value should be as follows:\nMaximum<= Next control number <= Minimum",
+            "Minimum": "The lowest number that the control number can have.\nDefault value is 1.",
+            "Maximum": "The highest number that the control number can have.\nDefault value is 999999.\nThe maximum value that you can specify is 99999999999999.\nIf webMethods.io B2B calculates the next expected control number and that number is greater than the control number maximum, then webMethods.io B2B sets the control number to the value you specify in the Minimum field.",
+            "Increment": "The value that webMethods.io B2B uses to increment the control number to determine the next expected control number.\nDefault value is 1.\nThe increment value should be within the range: maximum ~ minimum."
+        }
+    },
+    {
+        "co-extended_fields": {
+            "Name": "Name of the extended field.",
+            "Description": "Optional. Description of the extended field.",
+            "Datatype": "Data type of the extended field. By default, it is set as String.",
+            "Required": "Specifies whether the field is required or optional. By default, it is set as not required.\nWhen you define a field, webMethods.io B2B automatically adds it to all profiles you create after you add the field but does not add the field to existing profiles. Therefore, if you mark the field required, you must add it to the existing profiles manually.",
+            "Status": "Specifies whether the field is active or inactive. By default, it is set as inactive.\nWhen you mark a field as active, it appears in all profiles that contain it. When you deactivate a field, it does not appear in any profiles. If you create profiles while a field is in the inactivate state, the profiles do not contain the field. If you later mark the field as active and if the field is marked required, you have to update the new profiles manually.",
+            "Maximum length": "Maximum number of characters to allow in the field. The default value is 128. Number of characters should be greater than 1 and less than 128.",
+            "Default value": "Default value for the field. The default value is used when no other valid values are defined.",
+            "Valid values": "Acceptable values for the field. Type a valid value and click Add value and repeat as necessary. The added values get listed. Click  to delete the added values.\nThe number of allowed values depends on the value of Maximum length configured.\nYou can rearrange the order of the fields in the valid values list."
+        }
+    },
+    {
+        "ta-add_users": {
+            "Username": "Type a unique username associated with the partner to authorize document exchange in webMethods.io B2B.",
+            "Full name": "Type the complete name of the partner user.",
+            "Password": "Type the password configured for the partner user. The password policy mandates you to create a password that is at least eight characters long. It must be a combination of alphanumeric characters with at least one uppercase and one lowercase character and must have at least one special character.\nEnsure that the new password you are about to use is not the same as the username or the current password",
+            "Confirm password": "Retype the password for the partner user."
+        }
+    },
+    {
+        "ta-add_users": {
+            "Username": "Username associated with the partner user.",
+            "Full name": "Full name of the partner user.",
+            "Status": "Status of the partner user.\nActive\nInactive",
+            "Actions": "The possible actions are:\nEdit. Edit the partner user details.\nDelete. Delete a partner user.\nReset Password. Reset the password for a partner user.\nYou can also reset the password for an existing partner user by adhering to the password policy."
+        }
+    },
+       {
+        "ta-create_tpa_templates": {
+            "Name": "Specify a unique name for the template.",
+            "Description": "(Optional). Type a short description.",
+            "Refer to": "Select the system through which you want to access the document type of the TPA.\n"
+        }
+    },
+    {
+        "ta-create_tpa_definitions": {
+            "Agreement name": "Name of the Trading Partner Agreement. To create an agreement between business partners that exchange:EDI business documents, ensure that you select EDITPA as the agreement name. RNIF-PIP business documents, ensure that you select the document type name as the agreement name.",
+            "Status": "Status of the TPA. The possible values are:Proposed. When the agreement status is proposed, a TPA is in a draft status. You can modify the TPA fields and data input. Agreed. An agreed status means that the TPA is final. When the agreement status is agreed, the data statuses take effect. Disabled. The disabled status means the TPA should not be used. If you are using a TPA and no longer want to use it, you can disable it. When you disable a TPA, the TPA remains in the webMethods.io B2B, but is considered inactive. Later, if you decide that you need the TPA, you can change the agreement status to proposed or agreed.",
+            "Sender": "Select the sender from a list of partners. For EDI, to create a template that you will duplicate to create other TPAs, use the default value Unknown.",
+            "Receiver": "Select the receiver from a list of partners. For EDI, to create a template that you will duplicate to create other TPAs, use the default value Unknown.",
+            "Description": "(Optional). Type a short description.",
+            "Template structure": "Select a TPA template as reference while creating the TPA definition. TPA template defines the TPA data specific to the business-document type or a processing that is specific to a sender-receiver pair. Depending on the template structure you select, the input form for that template structure appears, so you can specify the values in the TPA definition.",
+            "Data Status": "When the TPA’s agreement status is Agreed, it indicates whether the values for the TPA data that are defined in the TPA template can be modified. The possible values are: <b>Mutable.</b> You can modify the values of TPA data when the TPA is in proposed and disabled states. <b>Immutable.</b> You can modify the values of TPA data only when it is in the proposed state."
+        }
+    },
+      {
+        "add_edi_document": {
+            "Standard": "The document standard from the list as required.\nFor a complete list of standard documents, see Supported Business Documents.",
+            "Version": "The version of the document standard selected.",
+            "Transaction": "The transaction type for the selected document standard and version."
+        }
+    },
+       {
+        "co-document_type_edi": {
+            "Standard": "UNEDIFACT",
+            "Version": "02B",
+            "Transaction": "CONTRL"
+        }
+    },
+    {
+        "update_edi_document": {
+            "Enable processing rule routing": "Searches for an appropriate processing rule and uses the rule to process the document.",
+            "Validate document structure": "Validates the structure of the inbound document against the available schema.\nXML Documents. For business documents created using a sample XML, and for those that do not have a corresponding schema available on webMethods.io Integration, this option is disabled as the structure cannot be validated against the schema.\nEDI Documents. This option is available for all EDI documents including the default EDI documents that are available with webMethods.io B2B.",
+            "Persist document": "Saves the document.\nOnly unique documents. Save only unique documents to webMethods.io B2B.\nAll documents. Save all documents.\n\nThe parts of the documents you can save are:\n\nContent. Save only the content part of the document.\nAttributes. Save only the document attributes.\nNote: If you reprocess a document without saving document attributes, you might get unexpected results. Because if the attributes are not saved, the document would not match the intended processing rule. Instead, the document would match another processing rule, such as the Default rule, and webMethods.io B2B would perform the processing actions defined in that rule.\nActivity log. Save only the activity logs of the document."
+        }
+    },
+    {
+        "record_properties": {
+            "Name": "Name of the selected node.",
+            "Alternate name": "Another name for the record definition.",
+            "Description": "Description of the record definition.",
+            "Mandatory": "An instance of this record must exist in the inbound document.\nEnabled. A record is required.\nDisabled. The record is optional.",
+            "Ordered": "Child records in the inbound document must appear in the same order as they appear in the record definition. This property applies only to records that are children of this record.\nEnabled. Records in the inbound document must appear in the order as in the record definition.\nDisabled. Records to appear in any order.",
+            "Max repeat": "Maximum number of times this record definition can repeat in the inbound document. Specify a positive integer. Maximum limit is 9999. The following values are interpreted in a specific manner:\n0. The record can appear once but cannot repeat.\n1. The record can appear once and repeat once.",
+            "Area": "The area assigned to this record definition. The property determines the possible values that you can assign to a record.\nTransaction-header\nHeading\nDetails\nSummary\nTransaction-trailer\nNot used",
+            "Position": "The position of the record in an inbound document. Select the checkbox to specify the position of the record. Maximum limit is 9999.",
+            "Allow undefined data": "The record definition is considered valid despite having undefined data. A record definition allows undefined data only if the inbound document is configured to do so.\nEnabled. Instances of this record definition to contain undefined data when the Max repeat property is set to value greater than 1. This option applies to all the record instances.\nProhibits instances of this record definition from containing undefined data.",
+            "Check fields": "Indicates if extra fields in the record instance must be treated as errors.\nEnabled. Does not allow record instances to contain more fields than those specified in the record definition.\n <b>Disabled.<\b> Allows extra fields at the end of the record instance.",
+            "Validator": "The type of validator to use to validate instances of this record definition.\nNone. No validations are required for this record.\nConditional Validator. Used in conjunction with all other validation attributes and are executed when the document is processed.\n\nConditional validators apply only to records and composites. For more information, see Conditional Validators."
+        }
+    },
+    {
+        "composite_properties": {
+            "Name": "Name of the selected node.",
+            "Alternate name": "Another name for the composite definition.",
+            "Description": "A description of the composite definition.",
+            "Mandatory": "The field must exist as a composite in the document.\nEnabled. Indicates that the composite is required.\nDisabled. Indicates that the composite is optional.",
+            "ID code": "The ID code of the composite definition. Its value is determined by the composite definition in the referenced record definition defined by the EDI standards.",
+            "Check fields": "Indicates if extra fields in the composite instance are treated as errors.\nEnabled. Does not allow composite instances to contain more fields than those specified in the composite definition.\nDisabled. Allows extra fields at the end of the composite instance.",
+            "Validator": "Type of validator to use to validate instances of this composite definition. Validation options are:\nNone. No validations are required for this composite.\nConditional Validator. Used in conjunction with all other validation attributes and are executed when the document is processed.\n\nConditional validators apply only to records and composites. For more information, see Conditional Validators\n.",
+            "Extractor": "Field number in the record that contains the composite you want to extract. It extracts the field or composite data from the record or extracts the sub-field data from the composite. If this property is empty, the composite is not extracted.\nNote: The extractor works for a composite only if the field delimiters and sub-field delimiters are defined for the inbound document."
+        }
+    },
+    {
+        "field_properties": {
+            "Name": "Name of the selected node.",
+            "Alternate name": "Another name for the field definition. The alternate name is used as the name of the String field that corresponds to this field definition in an inbound document.",
+            "Description": "The field definition in a composite reference or a record reference at the specified location in the inbound document.",
+            "Mandatory": "An instance of this field definition must exist in the inbound document.\nEnabled. Indicates that the field is required.\nDisabled. Indicates that the field is optional.",
+            "Data type": "The Data type of the field that accept inputs in (data type, minimum length, maximum length) format. The maximum character length limit is 9999.\nThe following data types are supported\nAlphabetic. Alphabetic string containing at least one non-space character.\nAlphanumeric. Alphanumeric string containing at least one non-space character.\nBinary. Binary values with 0's and 1's.\nDate. Date in YYMMDD or CCYYMMDD formats.\nDecimal number. Numeric value containing a decimal point.\nIdentifier. Values are from a predefined list of values maintained by the ASC X12 Committee and other standards setting bodies.\nNumber. Positive integer. Number indicates the decimal precision.\nTime. Time in HHMMSS format.\n\nThe minimum length and maximum length fields indicate the minimum and maximum character length for Length, Byte length, and Code list validators.",
+            "ID code": "The ID code for the field definition. It is defined by the EDI standards.",
+            "Format service": "Format type applied to the field definition. The format service validates either the content in a field or converts the content in an associated field to an appropriate format.\nFor example, a format service can validate if the content associated with a node is of numeric type. Another format service could convert a timestamp from HH:mm:ss.SS format to HHmmssSS.\nThe following are the properties of the Format service:\nName. Name of the format service.\nInternal format. The format required by internal application.\nExternal format. The format required by EDI ANSI standard format.",
+            "Validator": "The type of validator to use to validate the field. The supported types are:\nLength validator. For a length validator, specify the maximum and minimum number of characters this field can contain to be considered valid.\nMinimum length. Minimum number of characters in this field for it to be valid. Type zero (0).\nMaximum length. Maximum number of characters in this field for it to be valid.\nCode list validator. Specify a comma separated list of valid custom codes if they are not available with the standard schema.\nClick Look up to view the list of codes that the standard schema provides.\nNote: If an inbound EDI document was reset before the 1.4 release, then extraction of code list validator node would fail. As a work around, you must reset the business document again.\nByte length validator. Specify the maximum and minimum number of bytes that this field can contain for it to be valid.\nMinimum length. Minimum number of bytes that this field can contain for it to be valid.\nMaximum length. Maximum number of bytes that this field can contain for the field to be valid.",
+            "Extractor": "Location of the data to extract for this field. The extractor works for a field only if the field delimiters are defined for the inbound document.\nNth field. Displays the position of the field to extract.\nID node. Displays the ID of the field to extract.\nFixed position. Displays the start and end positions of the bytes to extract."
+        }
+    },
+    {
+        "edi_document_properties": {
+            "XPath expression": "webMethods.io B2B fills in the XQL query for the node.",
+            "Attribute": "The required document attribute values to extract from documents that match this document type. Select the required attribute in one of the following ways:\nSelect an attribute from the list.\nIf the attribute is not available in the list:\nClick Add attribute.\nIn the Add document attribute dialog box, provide the required details.\nClick Save. This displays the Add extracted attribute dialog box.\nClick Add.\nThe attribute now appears in the attributes list.\nAvoid using characters other than: A-Z, a-z,0-9, _ (underscore), - (hyphen) in the attribute names.",
+            "Type": "The type of the attribute selected.",
+            "Description": "The description included for the selected attribute.",
+            "Required": "By default, when webMethods.io B2B cannot extract an attribute, it continues processing, and if processing completes successfully, sets the processing status to DONE. It does not log an error to the activity log. If webMethods.io B2B has to log an error to the activity log when it cannot extract an attribute, then designate that attribute as required for extraction. If processing completes successfully, webMethods.io B2B sets the processing status to DONE W/ERRORS.",
+            "Transformation": "webMethods.io B2B can transform extracted attributes before storing them in the webMethods.io B2B database.\nIf you extract an attribute that has the data type DATETIME, identify the date format. Either choose a built-in common date and time format or type the format using a pattern string based on the Time Format Syntax described for the java.text.SimpleDateFormat class. webMethods.io B2B extracts the value of the date, uses the pattern you specify to decode the value, and converts it to the format that webMethods.io B2B requires to store the date in the BizDocEnvelope.\nIf you do not provide a date and time format, webMethods.io B2B uses the default built-in transformation format dd-MM-yyyy HH:mm:Ss.\nIf you extract an attribute that has the data type STRING, transform the string value using one of the built-in transformations below:\nUppercase: Transforms the extracted string attribute value to all uppercase.\nLowercase: Transforms the extracted string attribute to all lowercase.\nString Substitution: Substitutes extracted values with a pattern you specify. webMethods.io B2B uses the java.text.MessageFormat class to perform this transformation.\nFor example, you might specify the pattern Items Ordered: {0}, {1}, {2} , and specify an XQL query for the attribute that extracts this array of values:\n0 Cellular phone\n1 Belt clip\n2 Rapid mobile charger\nwebMethods.io B2B would store the following for the value of the attribute:\nItems Ordered: Cellular phone, Belt clip, Rapid mobile charger\nIf you place more arguments in the pattern than there are extracted values, the string stored in the database for the attribute contains the extra arguments. If you specify fewer arguments than there are extracted values, the string contains only the values for the number of arguments.\nIf you extract an attribute that has the data type NUMBER and contains an array of numbers, transform the array into a single value using one of the built-in transformations as follows:\nAverage: Calculates the average value of all the numbers in the array.\nMinimum: Calculates the smallest number in the array.\nMaximum: Calculates the largest number in the array.\nSum: Calculates the sum of all the numbers in the array.\nNo format: Stores the first value of the array as the value of the attribute.\nWhen webMethods.io B2B extracts a NUMBER from a document, it uses the number parsing behavior of java.lang.Number.\nFor example, if the NUMBER contains the value 100zzz, webMethods.io B2B interprets the value as 100, instead of displaying an error as it would if the value were zzz100."
+        }
+    },
+    {
+        "interpreting_validation_error_codes": {
+            "1": "In the EDI document schema, the Mandatory drop-down menu is set to true for this element, but the element does not occur in the EDI document.",
+            "2": "Reserved for future use.",
+            "3": "Unexpected element. This field is not allowed in the record or composite in which it appears.",
+            "4": "In the EDI document schema, a length validator is specified in the Validator property for this field. The value in the EDI document exceeds the maximum length specified.",
+            "5": "In the EDI document schema, a length validator is specified in the Validator property for this field. The value in the EDI document did not meet the minimum length specified.",
+            "6": "Reserved for future use.",
+            "7": "In the EDI document schema, a code list validator is specified in the Validator property for this field. The value in the EDI document is not listed in the EDI schema as a valid value.",
+            "8": "Reserved for future use.",
+            "9": "Reserved for future use.",
+            "10": "In the EDI document schema, a conditional validator is specified in the Validator property for this composite or record. The contents of this composite or record does not meet the conditional requirements.\nNote: The errorMessage variable in the convertEDIMessagetoDocument operation contains the number of the condition that failed. If you have a validation string of C010203R0405 and both conditions fail, the error message would state that rules 0 and 1 are violated. If only the second is violated, it states that the rule 1 is violated.",
+            "11": "The record is not defined anywhere in the EDI document schema. This error appears only when you do not specify a Default Record or selected Allow Undefined Data where this record appears in the document. If you specify either of these properties, you do not receive this error.",
+            "12": "The record is defined in this EDI document schema, but it occurs in the document in a location prohibited by the EDI document schema.",
+            "13": "Reserved for future use.",
+            "14": "In the EDI document schema, the number of record instances in the EDI document exceeds the specified maximum number of repeats. This is validated against the Max Repeat property for a particular record.",
+            "15": "Reserved for future use.",
+            "16": "Within a record, this code indicates that the record contains a composite or field error. For a composite, this indicates that the composite contains a subfield error.",
+            "17": "A string could not be formatted into the intended format. A format service reported that the data could not be formatted properly.",
+            "18": "The conditional validation rule requires a field, but that field is not present in the data.",
+            "19": "A field is excluded by a conditional validation rule, but that field is present in the data."
+        }
+    },
+    {
+        "add_identifiers_flat_file": {
+            "Name": "Type a name for the Flat File document.",
+            "Description": "(Optional) Provide a brief description for the Flat File document.",
+            "Refer to": "Select the product to refer to.\n\nNo reference. Does not have an external reference.\nwebMethods.io Integration. Refers to a Flat File connector through a project on webMethods.io Integration."
+        }
+    },
+    {
+        "add_ff_identifiers_flat_file": {
+            "Key": "A valid key to identify the Flat File document type. For example, a filename.",
+            "Value": "The corresponding value for the Key that was defined. For example, sample.txt.",
+            "Add to Channel": "(Optional) select the required channel as follows:\nClick Select channel.\nSelect the channel from the list.\nClick Add to channel.\nClick Add."
+        }
+    },
+    {
+        "add_attributes_flat_file": {
+            "Attribute": "The required document attribute values to extract from documents that match this document type. Select the required attribute in one of the following ways:\nSelect an attribute from the list. If the attribute is not available in the list:\n\nClick Add attribute.\nIn the Add document attribute dialog box, provide the required details.\nClick Save.\nIn the Add extracted attribute dialog box, click Add.\nAvoid using characters other than: A-Z, a-z,0-9, _ (underscore), - (hyphen) in the attribute names.",
+            "Type": "The type of the selected attribute.",
+            "Description": "The description of the selected attribute.",
+            "Required": "By default, when webMethods.io B2B cannot extract an attribute, it continues to process, and if the processing completes successfully, webMethods.io B2B sets the processing status to DONE. It does not log an error to the activity log. If webMethods.io B2B has to log an error to the activity log when it cannot extract an attribute, then designate that attribute as required for extraction. If processing completes successfully, webMethods.io B2B sets the processing status to DONE W/ERRORS.",
+            "Transformation": "webMethods.io B2B can transform extracted attributes before storing them in the webMethods.io B2B database.\nIf you extract an attribute with the data type DATETIME or DATETIME LIST, specify the date format. Choose a built-in common date and time format or type the format you need, using a pattern string based on the Time Format Syntax described for the java.text.SimpleDateFormat class.\nwebMethods.io B2B extracts the value of the date and uses the pattern you specify to decode the value and converts it to the format that webMethods.io B2B requires to store the date in the BizDocEnvelope.\nIf you do not provide a date and time format, the default built-in transformation format dd-MM-yyyy HH:mm:Ss is used.\n\nIf you extract an attribute that has the data type STRING or STRINGLIST, then transform the string value using one of the built-in transformations below:\nUppercase: Transforms the extracted string attribute value to all uppercase.\nLowercase: Transforms the extracted string attribute to all lowercase.\nString Substitution: Substitutes extracted values with a pattern you specify. webMethods.io B2B uses the java.text.MessageFormat class to perform this transformation.\nItems Ordered: Cellular phone, Belt clip, Rapid mobile charger\nIf you place more arguments in the pattern than there are extracted values, the string stored in the database for the attribute contains the extra arguments. If you specify fewer arguments than there are extracted values, the string contains only the values for the number of arguments.\nIf you extract an attribute that has the data type NUMBER and contains an array of numbers, transform the array into a single value using one of the built-in transformations as follows:\nAverage: Calculates the average value of all the numbers in the array.\nMinimum: Calculates the smallest number in the array.\nMaximum: Calculates the largest number in the array.\nSum: Calculates the sum of all the numbers in the array.\nNo format: Stores the first value of the array as the value of the attribute.\n\nWhen webMethods.io B2B extracts a NUMBER or NUMBER LIST from a document, it uses the number parsing behavior of java.lang.Number.\nFor example, if the NUMBER or NUMBER LIST contains the value 100zzz, webMethods.io B2B interprets the value as 100, instead of displaying an error as it would if the value were zzz100.",
+            "Select Channel": "(Optional) select a channel to add an attribute to it:\n\nClick Select channel.\nSelect the channel from the list.\nClick Add to channel.\nClick Add."
+        }
+    },
+    {
+        "configure_flat_file_option": {
+            "Enable Processing Rule Routing": "Enables processing of documents using pre-processing and processing actions defined in a processing rule. If you want to process documents using only pre-processing actions defined in the document type, disable processing rule routing.",
+            "Validate document structure": "Validates the structure of the inbound document against the webMethods.io Flat File connector associated with this document. Optionally override the delimiters set in the Flat File connector using the Override delimiter button.\nThe Override delimiter button uses the values you set, instead of those set in the corresponding flat file connector on webMethods.io Integration for the following fields:\n\nRecords. The character that separates records in a Flat File document.\nField or composite. The character that separates field or a composite in a Flat File.\nSubfield. The character that separates subfields in a Flat File document.\nRelease character. The character used to enable a delimiter to be used for its intended, original meaning. The character following the release character is not be treated as a delimiter. For example, the field delimiter is + and the release character is \\. When using + within a field as text, you must prefix it with the release character.\nSkip whitespace. Enable to skip whitespaces at the beginning of the record.\nNote: If you do not set specific delimiters for the inbounds documents meant for webMethods.io B2B, the product displays the delimiters set in the webMethods.io Integration Flat File connector. But, if you set new value for this option on the Override delimiters dialog box in webMethods.io B2B, the inbound documents will be parsed based on these newly set delimiters.",
+            "Save": "Saves the documents to the database. Save a document to the database when you want to:\nDeliver the document using reliable delivery with immediate or scheduled delivery for details, see Configuring Reliable Delivery Settings in a Partner Profile.\nPass a document to a business process.\nSend a document back to the beginning as a new document (for example, because the document did not match any defined document type). This is called resubmitting the document. For details about the resubmitting document, see Editing and Resubmitting a Business Document.\nSend a document back through processing rules (for example, because the document was processed by the wrong rule). This is called reprocessing the document. For details about the reprocessing document, see Reprocessing a Business Document.\n\nChoose to save All documents or Only unique documents.\nSelect to persist just the Content, Attributes, Activity log or all of them in the saved document."
+        }
+    },
+    {
+        "xml_add_attribute": {
+            "XPath expression": "webMethods.io B2B fills in the XQL query for the node.",
+            "Attribute": "Specifies the required document attribute values to extract from documents that match this document type.\nSelect the required attribute in one of the following ways:\nSelect an attribute from the list.\nIf the attribute is not available in the list:\nClick Add attribute.\nIn the Add document attribute dialog box, provide the required details.\nClick Save. This displays the Add extracted attribute dialog box.\nClick Add. The newly added attribute is listed in the attributes list.\n\nAvoid using characters other than: A-Z, a-z,0-9, _ (underscore), - (hyphen) in the attribute names.",
+            "Type": "Specifies the type of the attribute selected.",
+            "Description": "Specifies the description included for the selected attribute.",
+            "Required": "By default, when webMethods.io B2B cannot extract an attribute, it continues processing, and, if processing completes successfully, sets the processing status to DONE. It does not log an error to the activity log. If you want webMethods.io B2B to log an error to the activity log when it cannot extract an attribute, you can designate that attribute as required for extraction. If processing completes successfully, webMethods.io B2B sets the processing status to DONE W/ERRORS.",
+            "Transformation": "webMethods.io B2B can transform extracted attributes before storing them in the webMethods.io B2B database.\nIf you extract an attribute that has the data type DATETIME or DATETIME LIST, you must identify the date format. Choose a built-in common date and time format or type the format you need using a pattern string based on the Time Format Syntax described for the java.text.SimpleDateFormat class. webMethods.io B2B extracts the value of the date and uses it and the pattern you specify to decode the value and convert it to the format that webMethods.io B2B requires to store the date in the BizDocEnvelope.\nIf you do not provide a date and time format, the default built-in transformation format dd-MM-yyyy HH:mm:Ss is used.\nIf you extract an attribute that has the data type STRING or STRINGLIST, you can transform the string value using one of the built-in transformations below:\nUppercase: Transforms the extracted string attribute value to all uppercase.\nLowercase: Transforms the extracted string attribute to all lowercase.\nString Substitution: Substitutes extracted values with a pattern you specify. webMethods.io B2B uses the java.text.MessageFormat class to perform this transformation.\nFor example, you might specify the pattern Items Ordered: {0}, {1}, {2} , and specify an XQL query for the attribute that extracts this array of values:\n0 Cellular phone\n1 Belt clip\n2 Rapid mobile charger\nwebMethods.io B2B would store the following for the value of the attribute:\nItems Ordered: Cellular phone, Belt clip, Rapid mobile charger\nIf you place more arguments in the pattern than there are extracted values, the string stored in the database for the attribute contains the extra arguments. If you specify fewer arguments than there are extracted values, the string contains only the values for the number of arguments.\nIf you extract an attribute that has the data type NUMBER and contains an array of numbers, use transform the array into a single value using one of the built-in transformations as follows:\nAverage: Calculates the average value of all the numbers in the array.\nMinimum: Calculates the smallest number in the array.\nMaximum: Calculates the largest number in the array.\nSum: Calculates the sum of all the numbers in the array.\nNo format: Stores the first value of the array as the value of the attribute.\n\nWhen webMethods.io B2B extracts a NUMBER or NUMBER LIST from a document, it uses the number parsing behavior of java.lang.Number.\nFor example, if the NUMBER or NUMBER LIST contains the value 100zzz, webMethods.io B2B interprets the value as 100, instead of displaying an error as it would if the value were zzz100."
+        }
+    },
+    {
+        "xml_options": {
+            "Enable Processing Rule Routing": "Enables processing of documents using pre-processing and processing actions defined in a processing rule.\n\nIf you want to process documents using only pre-processing actions defined in the document type, disable processing rule routing.",
+            "Validate document structure": "Validates the structure of the inbound document against the available schema.\n<b>XML Documents.<\b> For business documents created using a sample XML, and for those that do not have a corresponding schema available on webMethods.io Integration, this option is disabled as the structure cannot be validated against the schema.\n<b>EDI Documents.<\b> This option is available for all EDI documents including the default EDI documents that are available with webMethods.io B2B.",
+            "Verify digital signature": "Executes a verification service to verify the digital signatures of documents.\n\nTo use this action, the document type must specify extraction of the SignedBody and Signature system attributes, and the signature must be a PKCS#7 detached signature of the signed body. In addition, the profile for each partner whose digital signature you want to verify must specify a certificate. webMethods.io B2B ensures that the signed body has not changed by verifying the digital signature. To verify that the sender is who it claims to be, webMethods.io B2B matches the certificate from the digital signature to the certificate in its database for the sender.",
+            "Check for Duplicate Document": "Checks for a document with the same Document ID; the same Document ID and sender; the same document ID, sender, and receiver; or the same document ID, sender, and document type. In the extraction specifications, you must specify extracting the necessary attributes for the option you select. If you want to use a custom service that performs the check based on other attributes, click Select and search or browse for the service.",
+            "Save": "Saves documents to the database.\n\nYou must save a document to the database when you want to:\n\nDeliver the document using reliable delivery with immediate or scheduled delivery.\nPass a document to a business process.\nSend a document back to the beginning as a new document (for example, because the document did not match any defined document type). This is called resubmitting the document.\nSend a document back through processing rules (for example, because the document was processed by the wrong rule). This is called reprocessing the document.\n\nChoose to save All documents or Only unique documents.\n\nSelect whether you want to persist just the Content, Attributes, Activity log or all of them in the saved document."
+        }
+    },
+     {
+        "xml_add_extracted_attribute": {
+            "XPath expression": "The complete XPath expression.",
+            "Attribute": "Select an attribute either from the list or add one by clicking Add attribute. To add an attribute, specify the following details:\n<b>Name.<\b> Name of the attribute.\nData type. Data type of the attribute.\nDescription. A short description of the attribute.\n<b>Status.<\b> Status of the attribute. The possible values are active or inactive.\n<b>Save.<\b> Save the attribute to the instance.",
+            "Required": "Specify if the attribute value must be mandatorily present in the inbound business document.",
+            "Transformation": "Specify if a transformation function must be applied to the attribute. The transformations you can apply depend on the data type of the attribute."
+        }
+    }
+    {
+        "co-interpreting_transactions": {
+            "": "Denotes that the related transactions have a mix of statuses. For example, if some of the transactions are with the processing code green and some with processing code red, then the consolidated processing status for the group would be orange."
+        }
+    },
+    {
+        "ta-view_transactions": {
+            "Live view": "Displays all the current transactions in webMethods.io B2B.",
+            "Archive view": "Displays all the archived transaction data.",
+            "Filters ": "Allows filtering of transaction data based on certain criteria. The standard attribute filters available by default are:\n- Sender. Displays all the partners who are senders of a business document.\n- Receiver. Displays all the partners who are receivers of a business document.\n- Document type. Displays all the business documents types in the system. The possible values are: EDI, EDIINT, XML, unknown, and other.\n- Processing status. Displays all the possible processing statuses of the business documents. You can select multiple processing statuses. For the list of all the processing statuses, see Viewing and Downloading Transactions.\n- User status. Displays all the user statuses in the EDI business document. You can also type a custom user status. - The search filters allow you to select multiple values as search criteria for each filter. You can use the More filters option to include all other document attributes as filters to refine your search result further.\nIf you change the filters after selecting one or more transactions, and re-apply another set of filters, the refreshed table will not retain the selected transactions.\nYou can use the Equals to criteria to search for multiple values of an attribute of string type, by separating them by using commas. For example, if you are searching for three documents using the documentID, then in the Equals to criteria, you must type, documentID1, documentID2, documentID3.\nYou can bookmark or save a set of search filters to rerun them at a later point.",
+            "Set date range": "Select one of the following options:\n- 24H. Displays transactions in the last 24 hours. This is the default option.\n- 7D. Displays transactions in the last seven days.\n- 30D. Displays transactions in the last 30 days.\n- Set custom range. Select a custom date range along with the timestamp to view the transactions in that date and time range. - All. Displays all transactions that are not archived or purged.\n",
+            "Search": "Enables you to search for a particular transaction. Type a keyword related to the required transaction. For example, to view EDI related transactions that start with the word “edi”, type edi in the search bar. Similarly, to view all the successful transactions that has sender, receiver, processing rule status, business documents that start with the word “success”, type the word “success” in the search bar.\nYou can also use transaction filters to search for a precise list of transactions. See Searching for Specific Transactions Using Transaction Filters for details.",
+            "Download": "Filters to view a specific set of transactions and download them in CSV format as a ZIP file.\nColumns that appear in the default configuration are Date Received, Business Document, Sender, Receiver, Processing Status and User Status. You cannot exclude the default columns when you download the file, and the default column headers appear before the customized columns.\n\nThe transaction history for 30 days is visible in the Live transactions list by default. After a roll-over period of 30 days, the transactions are archived by the archive schedule, and these appear in the Archive section. If you do not find the transactions of your interest, you might want to examine the purge schedule to check if those were deleted.\nIf you use Microsoft Excel to open the .csv file, to view the downloaded transactions, the leading zeroes are trimmed for the Document ID column.\nNote: The maximum file size of the file you download is 25MB. You can reduce the number of logs using filters. The downloaded transactions do not capture group information."
+        }
+    },
+    {
+        "filtering_options_transactions": {
+            "All transactions": "List view - Displays all available transactions. Group view - Displays the transaction groups, where each group contains transactions that originate from a single inbound document sent by a trading partner in the ascending order (latest at the bottom).",
+            "In error": "List view - Displays all transactions that are in error state. Group view - Displays transaction groups where all the transactions are in error state. If multiple transactions have failed within a group, only those transactions appear in the list.",
+            "Resubmitted": "List view - Displays all transactions that are resubmitted. Group view - Displays transaction groups where all the transactions are resubmitted. If multiple transactions are resubmitted within a group, only those transactions appear in the list.",
+            "Show matches": "This filter is enabled only in the Group view. Select this option to display only those transactions that match the search or filter criteria in the group view. For example, if you are in the In Error tab, and search for a specific partner by enabling this option, the search result displays only error transactions associated with that partner within each group. Enabled by default in the group view."
+        }
+    },
+    {
+        "transaction_filters": {
+            "Date Received": "Timestamp when the document was received.",
+            "Business Document": "Type of the business document associated with the transaction.",
+            "Sender": "Sending partner’s full corporation name.",
+            "Receiver": "Receiving partner’s full corporation name.",
+            "Processing status": "Status of the transaction.",
+            "": "Resubmit. Send a document back to webMethods.io B2B as a new document. For example, you would resubmit a document if the root tag of an EDI document does not match any business document. You would rectify the root tag issue and resubmit the document.\nA new transaction entry for the resubmitted documents appears on the Transactions page after you perform this action. An entry also appears in the Course of transactions from the document you resubmitted.\nYou can select a maximum of 100 transactions to reprocess them all at once.",
+            "User Status": "User Status of the document set by the processing rule. You can change the user status of the document once the processing rule corresponding to the document is triggered. For details on where you can change the user status, see Adding a Processing Rule.",
+            "Actions": "Perform the following actions on the document associated with the transaction:Reprocess. Send a document back through processing rules. For example, you would reprocess if the document was processed by the wrong rule. \n You can select a maximum of 100 transactions to reprocess them all at once. \nResubmit. Send a document back to webMethods.io B2B as a new document. For example, you would resubmit a document if the root tag of an EDI document does not match any business document. You would rectify the root tag issue and resubmit the document.\n A new transaction entry for the resubmitted documents appears on the Transactions page after you perform this action. An entry also appears in the Course of transactions from the document you resubmitted. You can select a maximum of 100 transactions to reprocess them all at once."
+        }
+    },
+    {
+        "viewing_task_details": {
+            "Task ID": "Unique identifier for the task.",
+            "Task type": "Type of task. Possible values are: External call, webMethods Cloud Container call, Delivery, or webMethods.io Integration call.",
+            "Transaction ID": "Transaction ID for which the task is created.",
+            "Time created": "Time at which the task was created.",
+            "Time updated": "Time at which the task was updated last.",
+            "Status": "Status of the task. The possible values are:\nDONE. Successfully delivered the document or run the integration.\nNote: For running the integration, the return value for status is success.\n\nFAILED. Reached the maximum retry limit for the task without success.\nNEW. Task is created, but not attempted even once.\nPENDING. Task was attempted but has not succeeded, and the maximum number of retries are also not exhausted.\nSTOPPED. Manual user action has interrupted and stopped the task that was in-progress.\nDELIVERING. For scheduled delivery tasks, webMethods.io B2B invokes scheduled delivery and is delivering the document.\nHELD. When delivery is suspended for a partner, webMethods.io B2B assigns the delivery tasks to HELD status and does not try to run. When delivery resumes, webMethods.io B2B updates the task statuses to PENDING and resumes trying to run the integrations.\nQUEUED. webMethods.io B2B has added the delivery task to the scheduled delivery queue.\nRATE-REGULATED. Document delivery rate is regulated based on the value configured for the outbound channel.",
+            "Outbound channel": "The outbound channel used to deliver the document to the receiving partner only if the task type is Delivery.",
+            "Sender": "The sender of the document for which the delivery task is created.",
+            "Receiver": "The receiver of the document for which the delivery task is created.",
+            "Transport task message": "Information about the transport status.",
+            "Retries": "The number of times task run is attempted for a failed integration. The default value is 5.",
+            "Retry limit": "Maximum number of times webMethods.io B2B tries to deliver the document or call an integration.",
+            "Retry factor": "Factor to use to determine the time interval between retries of a failed task. webMethods.io B2B calculates the time interval by multiplying the last wait time by the retry factor. The default value is 1. For example, the following shows sample values for the reliable execution mode and how they affect the wait times between attempts to redeliver a document.\nDelivery Maximum Retries = 3\nWait Between Retries = 10000 ms\nRetry Factor = 2\nWait until next attempt:\nRetry attempt 1: 10000 ms\nRetry attempt 2: 20000 ms\nRetry attempt 3: 40000 ms",
+            "Time to wait": "Number of milliseconds for webMethods.io B2B to wait before making the next attempt to re-run a failed task. The default value is 300ms.",
+            "Transport time": "The time (in milliseconds) it took for the task to complete irrespective of the resulting status in the previous attempt."
+        }
+    },
+]
