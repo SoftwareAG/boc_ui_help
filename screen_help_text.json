@@ -9,20 +9,6 @@
         }
     },
     {
-        "re-supported_channels": {
-            "Applicability Statement 2 IN": "Incoming messages are received using an AS2 connection and processed as soon as they are received.",
-            "Applicability Statement 2 OUT": "Outgoing messages are transmitted using an AS2 connection.",
-            "Applicability Statement 4 IN": "Incoming messages are received using an AS4 connection and processed as soon as they are received.",
-            "Applicability Statement 4 OUT": "Outgoing messages are transmitted using an AS4 connection.",
-            "Hyper Text Transfer Protocol IN": "Incoming messages are received as HTTP Post on the webMethods.io B2B HTTP server and processed as soon as they arrive.",
-            "Hyper Text Transfer Protocol OUT": "Outgoing messages are sent using an HTTP connection.",
-            "RNIF IN": "Incoming messages are received using an RNIF connection.",
-            "RNIF OUT": "Outgoing messages are sent using an RNIF connection.",
-            "SFTP-IN-CLIENT": "Incoming messages are received using an SFTP connection.",
-            "SFTP-OUT-CLIENT": "Outgoing messages are sent using an SFTP connection."
-        }
-    },
-    {
         "AS2-IN": {
             "Accept signed or signed-encrypted messages": "Select to receive inbound AS2 messages that are either signed or signed and encrypted.\nIf you select this option and the inbound messages are not signed or signed and encrypted, then an Insufficient message security error appears for those transactions in the Course of transaction section. This error also appears in the MDN if the sender requests one.\nDisabled by default",
             "Accept encrypted or signed-encrypted messages": "Select to receive inbound AS2 messages that are encrypted or signed and encrypted.\nIf you select this option and the inbound messages are not encrypted or signed and encrypted, then an Insufficient message security error appears for those transactions in the Course of transaction section. This error also appears in the MDN if the sender requests one.\nDisabled by default\nNote: If both Accept signed or signed-encrypted messages and Accept encrypted or signed-encrypted messages are enabled, the channel receives inbound messages that are both signed and encrypted."
@@ -90,54 +76,49 @@
     },
     {
         "RNIF-IN": {
-            "Message": "",
-            "Defer to TPA": "1.1 and 2.0",
-            "RNIF version": "1.1 and 2.0",
-            "Encoding": "1.1 and 2.0",
-            "Receive signed messages": "1.1 and 2.0",
-            "Synchronous response hash algorithm": "2.0",
-            "Receive encrypted messages": "2.0",
-            "Receive encrypted message header": "2.0",
-            "Synchronous response encryption algorithm": "2.0",
-            "RC2 encryption key length": "2.0",
-            "Send receipt acknowledgement": "1.1 and 2.0",
-            "Usage code": "1.1 and 2.0",
-            "PIP information": "",
-            "Sender focal role": "1.1 and 2.0",
-            "Receiver focal role": "1.1 and 2.0",
-            "Process code": "1.1 and 2.0",
-            "Process version": "1.1 and 2.0",
-            "Transaction code": "1.1 and 2.0",
-            "Response action code": "1.1 and 2.0"
+            "Defer to TPA": "Indicates whether to use the configurations from TPA. \nIf you select this option, then the configurations are selected from TPA for sending or processing an RNIF message.\n Disabled by default. Available versions are: 1.1 and 2.0",
+            "RNIF version": "Version of RNIF to use to send the documents to partners. Available versions are: 1.1 and 2.0",
+            "Encoding": "Encoding to use for MIME parts of synchronous response.\n Select from the list of signing algorithms:\n quoted-printable (Default)\n 7bit\n 8bit \n binary \n base64 \n uuencode.\nAvailable versions are: 1.1 and 2.0",
+            "Receive signed messages": "Indicates whether to receive signed inbound RNIF messages. If you select this option and the inbound messages are not signed, then an RNIF exception is sent to partners and the same appears for those transactions in the Course of transaction section. Enabled by default. Available versions are: 1.1 and 2.0.",
+            "Synchronous response hash algorithm": "The algorithm used to generate the RosettaNet Message Digest for synchronous response.\n Select from the list of algorithms: \nSHA-1 \n SHA-256 (Default) \n SHA-384 \n SHA-512Available versions is: 2.0.",
+            "Receive encrypted messages": "Indicates whether to receive encrypted inbound RNIF messages. If you select this option and the inbound messages are not encrypted, then an RNIF exception is sent to partners and the same appears for those transactions in the Course of transaction section. Enabled by default. Available versions is: 2.0",
+            "Receive encrypted message header": "Indicates whether to receive inbound RNIF message headers with encrypted header. If you select this option and the inbound messages are not encrypted, then an RNIF exception is sent to partners and the same appears for those transactions in the Course of transaction section. \nDisabled by default.\n Important: To ensure that you receive an encrypted message and message header, enable Receive encrypted messages and Receive encrypted message header.Available versions is: 2.0.",
+            "Synchronous response encryption algorithm": "The encryption algorithm to use to encrypt the documents for synchronous response. Select from the list of supported encryption algorithms: \nTripleDES (Default) \nRC2 \nDESAvailable versions is: 2.0.",
+            "RC2 encryption key length": "Length (in bits) of the RC2 encryption key. Valid values are 128, 64, and 40. Default is 128. Available versions is: 2.0.",
+            "Send receipt acknowledgement": "Indicates whether to send an acknowledgment to partners upon receiving a document. Based on whether the incoming request header enforces a synchronous or asynchronous acknowledgment, webMethods.io B2B sends the acknowledgment accordingly (synchronously or asynchronously). Disabled by default.\n Available versions are: 1.1 and 2.0.",
+            "Usage code": "The RosettaNet message exchange environment. You can choose to have the RNIF message exchange in test or production mode. Valid values are Test or Production. Available versions are: 1.1 and 2.0.",
+            "Defer to TPA_pip":"Indicates whether to use the configurations from TPA. If you select this option, then the configurations are selected from TPA for sending or processing an RNIF message.\n Disabled by default. Available versions are: 1.1 and 2.0.",
+            "Sender focal role": "The value used to validate the GlobalPartnerRoleClassificationCode tag describing fromRole in the service header. For valid values, see the fromService and fromRole details in the PIP specification corresponding to the executing PIP, activity, or action. Available versions are: 1.1 and 2.0.",
+            "Receiver focal role": "The value used to validate the GlobalPartnerRoleClassificationCode tag describing toRole in the service header. For valid values, see the toService and toRole details in the PIP specification corresponding to the executing PIP, activity, or action.Available versions are: 1.1 and 2.0.",
+            "Process code": "Code or name of the PIP, such as 3A4 (Request Purchase Order). Available versions are: 1.1 and 2.0",
+            "Process version": "Version of the PIP process, such as 1.1 or 1.4. Available versions are: 1.1 and 2.0",
+            "Transaction code": "Transaction associated with each RosettaNet PIP document. For example, Create Purchase Order. Note: webMethods.io B2B does not validate the value of Transaction code against the incoming message. webMethods.io B2B uses this value to construct the response message. Available versions are: 1.1 and 2.0",
+            "Response action code": "Response action associated with each RosettaNet PIP document. For example, Purchase Order Confirmation Action. \nImportant: This is required only when the response has to be one way and synchronous.Available versions are: 1.1 and 2.0"
         }
     },
     {
         "RNIF-OUT": {
-            "Connection": "",
-            "Endpoint": "1.1 and 2.0",
-            "Username": "1.1 and 2.0",
-            "Password": "1.1 and 2.0",
-            "Message": "",
-            "Defer to TPA": "1.1 and 2.0",
-            "RNIF version": "1.1 and 2.0",
-            "Encoding": "1.1 and 2.0",
-            "Enable message signing": "1.1 and 2.0",
-            "Hash algorithm": "1.1 and 2.0",
-            "Enable message encryption": "2.0",
-            "Enable message header encryption": "2.0",
-            "Encryption algorithm": "2.0",
-            "RC2 encryption key length": "2.0",
-            "Enable message compression": "2.0",
-            "Enable synchronous response": "2.0",
-            "Usage code": "1.1 and 2.0",
-            "Document delivery rate": "",
-            "Enable": "1.1 and 2.0",
-            "Maximum number of requests per minute": "1.1 and 2.0"
+            "Endpoint": "Endpoint URL used to send RNIF messages to partners. You can either use an HTTP or HTTPS URL depending on your need. If you use HTTPS, ensure that the corresponding SSL certificate is configured in the sender’s partner profile. The URL must have the protocol, hostname, port (optional) and the complete path. For example, http://trader.com or https://trader.com. The available versions are: 1.1 and 2.0",
+            "Username": "Username used to connect to the partner’s endpoint. The available versions are: 1.1 and 2.0.",
+            "Password": "Password used to connect to the partner’s endpoint. The available versions are: 1.1 and 2.0.",
+            "Defer to TPA": "Whether to use the configurations from TPA.\n If you select this option, then the configurations are selected from TPA for sending or processing an RNIF message.\n Disabled by default. The available versions are: 1.1 and 2.0.",
+            "RNIF version": "Version of RNIF to use to send the documents to partners. The available versions are: 1.1 and 2.0.",
+            "Encoding": "Encoding to use for MIME parts. Select from the list of signing algorithms:\nquoted-printable (Default)\n7bit\n8bit\nbinary\nbase64\nuuencode. The available versions are: 1.1 and 2.0.",
+            "Enable message signing": "Whether to sign the outbound RNIF message using sender’s private key. Enabled by default. The available versions are: 1.1 and 2.0.",
+            "Hash algorithm": "The algorithm used to generate the RosettaNet Message Digest.\n Select from the list of algorithms:\n SHA-1\n SHA-256 (Default)\n SHA-384 \n SHA-512. The available versions are: 1.1 and 2.0.",
+            "Enable message encryption": "Whether to encrypt the outbound RNIF message using receiver’s public key. If you enable encryption, ensure that the receiver has a corresponding certificate for the encrypt-decrypt usage. Enabled by default. The available version is: 2.0.",
+            "Enable message header encryption": "Whether to encrypt the RNIF message header.\n Important: You cannot encrypt the message header alone, without encrypting the message. To encrypt the message and message header, enable Enable message encryption and Enable message header encryption.The available version is: 2.0.",
+            "Encryption algorithm": "The encryption algorithm to use to encrypt the documents. Select from the list of supported encryption algorithms:\nTripleDES (Default)\n RC2 \n DES. The available version is: 2.0.",
+            "RC2 encryption key length": "Length (in bits) of the RC2 encryption key. Valid values are 128, 64, and 40. Default is 128. The available version is: 2.0.",
+            "Enable message compression": "Whether to compress of outbound messages. Disabled by default. The available version is: 2.0",
+            "Enable synchronous response": "Whether to transmit the response or receipt acknowledgment synchronously. Disabled by default. The available version is: 2.0.",
+            "Usage code": "The RosettaNet message exchange environment. You can choose to have the RNIF message exchange in test or production mode. Valid values are Test or Production. The available versions are: 1.1 and 2.0.",
+            "Enable": "Allows you to limit the rate at which documents must be delivered to the endpoint. You must persist the document in the database, so this option can be used to deliver documents in a regulated manner. The available versions are: 1.1 and 2.0.",
+            "Maximum number of requests per minute": "Specify the maximum number of business documents that can be delivered to the outbound channel endpoint. You can tune this rate based on the performance of the partner systems that receive the business documents on this endpoint. The default value is 1 (minimum). The maximum value is 1000. The available versions are: 1.1 and 2.0."
         }
     },
     {
         "SFTP-IN": {
-            "Connection": "",
             "SFTP Client Version": "The internal SFTP client version to use to connect to the SFTP server.\nSpecify the following values for each client version you select:\n\nSFTP V1. No additional configuration information is required.\nSFTP V2. SFTP V2 is the default internal SFTP client because additional configuration properties such as Key Exchange Algorithms, Machine Access Code (MAC) algorithms, and ciphers that are not available in the Version 1 client.\nSpecify the values for additional configurations:\n\nMin Diffie-Hellman key size. The minimum Diffie-Hellman key size to use. The default minimum key size is 1024 bits.\nMax Diffie-Hellman key size. The minimum Diffie-Hellman key size to use. The default maximum key size is 8192 bits.\n\nThe Preferred MAC Algorithms list excludes hmac-sha256, hmac-sha256@ssh.com, hmac-sha512, hmac-sha512@ssh.com, hmac-ripemd160, hmac-ripemd160@openssh.com, hmac-ripemd160-etm@openssh.com as they are not supported by the latest Version 2 SFTP client.\n\nNote: You cannot change the SFTP client version after you create the channel. If your existing workflows fail because of the SFTP version mismatch, you must create a new channel with the right SFTP version.",
             "Hostname": "Host name or IP address of the partner’s SFTP server. For example, trader.com.",
             "Port": "An active port on the partner’s SFTP server. For example, 3456. Default is 22.\nIf the port to which the connection is being established is either invalid or not open, it results in a bad gateway error.",
@@ -145,13 +126,11 @@
             "Username": "Username used to connect to the partner’s SFTP server.",
             "Authentication type": "Type of authentication required to connect to partner’s SFTP server. Select from the following types of authentications:\nPassword\nPublic key\nwebMethods.io B2B supports only OpenSSH format to generate the public and private key pair. There is no support for SSH2 format for both public and private key pair.",
             "Password": "If you selected Password as the authentication type, provide the password to connect to the partner’s SFTP server.",
-            "Polling": "",
             "Folder path": "Path of the folder to which webMethods.io B2B places the files after processing. By default, webMethods.io B2B appends /processedto the folder path that you specified earlier in the Polling segment. For example, docs/por/processed.\nImportant: Ensure that the folder you specified has sufficient permissions for webMethods.io B2B to access and place the processed files.\nIn certain cases, the SFTP server might not support operations such as a file overwrite or rename. This might result in failure of the post processing action because of the inherent limitations of the underlying SFTP server. Refer to the SFTP server documentation to learn more about such limitations.\nNote: If webMethods.io B2B fails to move the files to the folder that you specified in this field, then webMethods.io B2B places the files at the default location. In this example, at docs/por/processed.",
             "File name filter": "Filter criteria used to identify the specific files for polling. You can provide a comma separated list of filter criteria. For example, *.xml, *.txt, test_*b2b*123*.",
             "Type of document": "The channel’s document type used to process files. Select from the following document types:\nEDI\nXML\nOther\nNote: You can only create one channel per document type.",
             "Frequency": "Frequency at which webMethods.io B2B polls the partner’s SFTP server for new files. Specify a numeric value. Default value is 5.",
             "Unit of frequency": "Unit of frequency specified in Frequency. Select from the following units:\nMinutes\nHours\nDays\nDefault value is 5. This makes the default polling frequency to be 5 minutes.",
-            "Post processing": "",
             "Action": "Action to be taken by webMethods.io B2B on the files after processing them. Select one of the following actions:\nMove to folder\nDelete\nDefault is Move to folder.",
             "Allow folder creation": "If the folder specified in the Folder path does not exist, enable this option to allow webMethods.io B2B to create a new folder with the same folder name.\nwebMethods.io B2B does not support creation of nested folders in SFTP server. For example, if docs/por is the existing folder path, then docs/por/processed is supported, whereas docs/por/processed/partners is not supported.\nNote: If the specified folder is inaccessible or if you fail to enable the Allow folder creation option, then webMethods.io B2B places the files at the default location. In this example, at docs/por/processed."
         }
@@ -174,11 +153,9 @@
             "Password": "If you selected Password as the authentication type, provide the password to connect to the partner’s SFTP server.",
             "Private key": "If you selected Public key as the authentication type, upload the private key file required to connect to the partner’s SFTP server.",
             "Passphrase": "If you selected Public key as the authentication type, provide the passphrase used to protect the private key.",
-            "Destination details": "",
             "Folder path": "The path of the folder into which webMethods.io B2B places the files.",
             "Allow folder creation": "If the folder specified in the Folder path does not exist, enable this option to allow webMethods.io B2B to create a new folder with the same folder name.\nwebMethods.io B2B does not support creation of nested folders in the SFTP server. For example, if docs/por is the existing folder path, then docs/por/processed is supported, whereas docs/por/processed/partners is not supported.\n",
             "File name prefix": "Prefix to add to the file name. Default value is wmiob2b. webMethods.io B2B constructs the file name by combining the prefix and timestamp. Thus, the file name format is: prefix\\_<current\\_timestamp in YYYYMMDDhhmmssSSS format\\>. For example, wmiob2b_20200623062905325.",
-            "Document delivery rate": "",
             "Enable": "Allows you to limit the rate at which documents must be delivered to the endpoint. You must persist the document in the database, so this option can be used to deliver documents in a regulated manner.",
             "Maximum number of requests per minute": "Specify the maximum number of business documents that can be delivered to the outbound channel endpoint. You can tune this rate based on the performance of the partner systems that receive the business documents on this endpoint. The default value is 1 (minimum). The maximum value is 1000."
         }
@@ -214,17 +191,6 @@
         }
     },
     {
-        "ta-2way_ssl_certificate_usecase": {
-            "Common Name": "Server name or host name, for example, www.softwareag.com",
-            "Organization": "Partner > Organization unit",
-            "Organizational Unit": "Partner > Profile name",
-            "Locality": "Partner > Contact (Administrative type) > City",
-            "State Or Province Name": "Partner > Contact (Administrative type) > State/Province",
-            "Country Name": "Partner > Contact (Administrative type) > Country",
-            "Email": "Partner > Contact (Administrative type) > Email"
-        }
-    },
-    {
         "ta-configuring_reliable_delivery_for_partner": {
             "Maximum number of retry attempts": "Number of times to try to redeliver a document to the partner. Specify an integer greater than 0.",
             "Wait between retries": "The number of milliseconds to wait before trying to redeliver the document for the first time. Specify an integer greater than 0.",
@@ -249,7 +215,7 @@
         }
     },
     {
-        "ta-define_control_number_partner": {
+        "ta-define_control_number_partner_1": {
             "Duplicate detection window": "Indicates a range of numbers that webMethods.io B2B uses to determine whether a number is duplicate or out-of-sequence.\nDefault value is 100.\nThis value should be less than half the difference between the maximum and minimum value specified, that is:\nDuplicate detection window < (maximum-minimum)/2\nNote: This is not applicable to outbound documents.",
             "Next control number": "The next control number that you expect for the interchange or group (or transmission or batch) to use.\nDefault value is 1.\nThe value should be as follows:\nMaximum<= Next control number <= Minimum",
             "Minimum": "The lowest number that the control number can have.\nDefault value is 1.",
@@ -278,7 +244,7 @@
         }
     },
     {
-        "ta-add_users": {
+        "ta-add_users_1": {
             "Username": "Username associated with the partner user.",
             "Full name": "Full name of the partner user.",
             "Status": "Status of the partner user.\nActive\nInactive",
@@ -454,7 +420,7 @@
             "Required": "Specify if the attribute value must be mandatorily present in the inbound business document.",
             "Transformation": "Specify if a transformation function must be applied to the attribute. The transformations you can apply depend on the data type of the attribute."
         }
-    }
+    },
     {
         "co-interpreting_transactions": {
             "": "Denotes that the related transactions have a mix of statuses. For example, if some of the transactions are with the processing code green and some with processing code red, then the consolidated processing status for the group would be orange."
@@ -509,4 +475,230 @@
             "Transport time": "The time (in milliseconds) it took for the task to complete irrespective of the resulting status in the previous attempt."
         }
     },
+    [
+        {
+            "co-type_of_log": {
+                "Date": "Timestamp when the action was performed on the deployment.",
+                "Event": "Message informing the action performed.",
+                "Performed by": "Name of the user who performed the action.",
+                "Actions": "Actions that you can perform. Click  to view the details of the selected activity."
+            }
+        },
+        {
+            "co-type_of_log": {
+                "Date": "Timestamp when the document was received. Click the timestamp to view the transaction status of the group to which the selected transaction belongs. Clicking the timestamp opens the Course of transaction section of the Transaction summary page.",
+                "Event": "Action performed on the document or the status of transaction. Some of the possible events are:\nAborted\nDone\nNew\nStatus changed\nReprocessed\nResubmitted\n\nFor details on possible events, see Viewing Transactions.",
+                "Performed by": "Name of the user who performed the transaction.",
+                "Actions": "Actions that you can perform. Click  to view the details of the selected transaction."
+            }
+        },
+        {
+            "co-type_of_log": {
+                "Date": "Timestamp when the action was performed on the deployment.",
+                "Name": "Name of the deployment.",
+                "Event": "Action performed on the deployments. Some possible events are:\nAvailable. Deployment is available in the Available deployment page of target environment.\nApplied. Deployment is applied in the target environment.\nDeleted. Deployment is deleted after it was applied in the target environment.\nRejected. Deployment is rejected in the target environment.\nPublished. Deployment is published to the target environment.\nAdded. Deployment is created.\nRenamed. Deployment name or description was changed.",
+                "Performed by": "Name of the user who performed the action.",
+                "Source": "Name of the environment from where the deployment set was published.\nNote: If you see (current) in the Source environment column, it indicates that the source environment is the environment to which you have currently logged-in to.",
+                "Target": "Name of the environment to which the deployment was published.\nNote: If you see (current) in the Target environment column, it indicates that the target environment is the environment to which you have currently logged-in to.",
+                "Actions": "Actions that you can perform. Click  to view the details of the selected deployment."
+            }
+        },
+        {
+            "co-type_of_log": {
+                "Date": "Timestamp when the user action was performed.",
+                "Asset Type": "Type of asset that participated in the activity.",
+                "Event": "Action performed by the user. Some possible events are:\nCreating an asset\nUpdating an asset\nDeleting an asset",
+                "Performed by": "Name of the user who performed the action.",
+                "Details": "Details of the activity."
+            }
+        },
+        {
+            "ta-configure_alerts_notifcations": {
+                "24H": "Displays transactions in the last 24 hours.",
+                "15D": "Displays transactions in the last 15 days. This is the default option.",
+                "7D": "Displays transactions in the last seven days.",
+                "Custom": "Provide a custom date range along with the timestamp to view the transactions in the specified date and time range.",
+                "Category": "Search for notifications that belong to a certain category. The available categories are: Transactions, Communications, Systems, and Assets.",
+                "Severity": "Search for notifications that belong to a certain severity. The available severities are: Critical, Error, Warning, and Information.",
+                "Filters": "Apply filters such as category and severity.",
+                "Mark as read": "Click on the mail icon to mark all the notifications as read."
+            }
+        },
+        {
+            "ta-register_environment": {
+                "Name": "Specify a name for the environment.",
+                "Description": "Provide a description stating the scope of environment that you are about to create."
+            }
+        },
+        {
+            "ta-export_assets": {
+                "Export as a zip file": "Specify a name for the export file. webMethods.io B2B either downloads the exported assets in the form of a ZIP file or displays the file browser. The location of the downloaded file depends on your browser configuration.",
+                "Create deployment": "Specify a name and optionally provide a description. The deployment you create appears on the Deployments page. See Viewing the Details of a Deployment for details.",
+                "Publish deployment to an environment": "Select the environment to which you want to quickly publish the deployment. If you notice environments other than the ones you created, it could be because there is more than one administrator creating and managing environments for your product instance. If you wish to publish the assets later, do not select this option. Important: You are required to provide your credentials before publishing the deployments. Note: If there are multiple environments mapping to the same Software AG cloud environment, webMethods.io B2B publishes the deployments to the last created target environment."
+            }
+        },
+        {
+            "ta-import_assets_usecase": {
+                "Skipped": "If you export assets from an on-premise Trading Networks instance, the assets that are not supported in webMethods.io B2B as yet, are listed as Skipped assets. For example, data-level permissions cannot be moved to the cloud instance because it is not supported.",
+                "Added": "If you import assets that are not present in the target instance, it gets added to the instance with the status as Added.",
+                "Updated": "If you import assets which are existing in the target instance and when you perform a force import, then the status will be Updated.",
+                "Ignored": "System assets or any of the asset properties of on-premise Trading Networks instance that are not supported in webMethods.io B2B as yet, are categorized as Ignored.",
+                "Missing dependencies": "Some assets require other assets. For example, the processing rule depends on partner profiles and document types, and document type depends on document attributes. For moved assets to work properly, the dependent assets must also move to the target instance, if they are not already present.\nWhen you select an asset to import it, the system scans the target instance for the presence of the dependent assets. If the dependent assets are not present in both the target instance or in the assets you selected, then those are listed as Missing dependencies.\nFor example, if a processing rule refer to a partner profile that does not exist in both the target instance or the import file, it is a Missing dependency.\nClick Include dependencies to include all the dependent assets. This option is enabled only when the dependent asset is present in the import file, but you did not select it during the Step1 of 3.",
+                "Conflicts": "When an asset already exists in the target instance, and is imported again with force as false, it causes conflicts without overwriting the asset. Conflicts can occur with warnings if assets are present on the target instance with different ID.\nFor example, if a partner profile already exists in the target system and is also available in the import file, it is a conflict.\nTo avoid such conflicts, ensure you import the assets, using the Force import option.\nClick Clear conflicts to remove the conflicted assets from import.",
+                "Critical": "Assets not imported for any other miscellaneous reasons are termed as Critical. For example, importing a different enterprise when the enterprise is already present in the target instance."
+            }
+        },
+        {
+            "ta-import_assets_usecase_force": {
+                "Force import": "To overwrite assets that might already exist in the target instance. For details, see here",
+                "Attach import summary with activity log": "To view the import activity in the activity logs."
+            }
+        },
+             {
+            "ta-viewing_details_of_deployment_sets": {
+                "Remove deleted assets": "Removes references to assets that were deleted from webMethods.io B2B. Using this action, webMethods.io B2B allows you to clean up the deployment before publishing. Important: This option appears only if the selected deployment contains assets that no longer exist. Additionally, until you remove the deleted assets from the deployment, webMethods.io B2B does not allow you to publish the deployment.",
+                "Publish deployment": "Publishes assets to an environment you select. Important: You are required to provide your credentials before publishing the deployment.",
+                "Delete deployment": "Deletes the deployment. Only the deployment is deleted. The assets applied to other environments remain intact."
+            }
+        },
+        {
+            "co-where_do_i_monitor_deployment_sets": {
+                "Date received": "Timestamp when the action was performed on the deployment.",
+                "Deployment name": "Name of the deployments.",
+                "Event": "Action performed on the deployments. Some of the possible events are:\nAvailable. Deployment is available in the Available deployment page of target environment.\nApplied. Deployment is applied in the target environment.\nDeleted. Deployment is deleted after it was applied in the target environment.\nRejected. Deployment is rejected in the target environment.\nPublished. Deployment is published to the target environment.\nAdded. Deployment is created.\nRenamed. Deployment name or description was changed.",
+                "Performed by": "Name of the user who performed the action.",
+                "Source environment": "Name of the environment from where the deployment set was published.\nNote: If you see (current) in the Source environment column, it indicates that the source environment is the environment to which you have currently logged-in to.",
+                "Target environment": "Name of the environment to which the deployment was published.\nNote: If you see (current) in the Target environment column, it indicates that the target environment is the environment to which you have currently logged-in to."
+            }
+        },
+    
+          {
+            "ta-register_environment": {
+                "Name": "Specify a name for the environment.",
+                "Description": "Provide a description stating the scope of environment that you are about to create."
+            }
+        },
+        {
+            "ta-archive_data_update": {
+                "Retention days": "Number of days to retain the transaction data before archiving.\nNote: Retention days start from the time webMethods.io B2B processes the document.",
+                "Next execution": "Date and time of the next execution of the archival schedule.",
+                "Last error": "Displays the error occurred, if any, during the last execution of the archival schedule.",
+                "Actions": "Displays action that you can perform. You can edit the archival schedule."
+            }
+        },
+        {
+            "ta-archive_data_update2": {
+                "Retention days": "Provide the number of days to retain the data before archiving. You can provide a value between 1 and 30. The default is 30 days.",
+                "Unique keys retention days": "Number of days for which the references to transactions identified as unique are retained before archiving. These references are used to check for duplicates in inbound documents. The valid values are: 1-366 days.\nNote: The unique keys are valid for the specified duration from the time they were first identified in the system. The duplicate detection on live transactions works based on the unique keys stored in the live store only for the duration you specify. Once the transaction’s unique key is moved to the archive store, the next transaction with the same key is not considered as a duplicate and is added as a new entry in the live store to check for duplicate in upcoming inbound transactions.",
+                "Run daily at": "Specify the time at which archival should start daily."
+            }
+        },
+        {
+            "ta-purge_data": {
+                "Retention days": "Provide the number of days to retain the data before purging.",
+                "Run at": "Specify the time at which purge should execute daily. The default is the time of schedule creation (current time).",
+                "Start date": "Specify the date from when the purge should start. The default is the current date.",
+                "End date": "Specify the date until when the delete schedule should run. If you do not specify an end date, webMethods.io B2B runs the schedule indefinitely."
+            }
+        },
+        {
+            "ta-purge_data_1": {
+                "Retention days": "Number of days to retain the transaction data before deleting. The maximum value is 366 days.",
+                "Next execution": "Date and time of the next execution of the purge rule.",
+                "Last error": "Displays the error occurred, if any, during the last execution of the purge rule.",
+                "Actions": "Displays action that you can perform such as, change the status of the set schedule, edit, or delete the schedule."
+            }
+        },
+        {
+            "ta-adding_control_numbers": {
+                "Sender": "Sending partner’s full corporation name.",
+                "Receiver": "Receiving partner’s full corporation name.",
+                "Standard": "The EDI standard of the documents in which to use the control number.\nSelect one of the following from the list: EANCOM, ODETTE, TRADACOMS, UCS, UNEDIFACT, VICS, X12.",
+                "Version": "The version of the EDI standard selected.\nFor example, for an ANSI X12 or UNEDIFACT interchange the version might be 00401 and for a group it might be 4010. For a TRADACOMS batch or transmission, the version can only be 1. For a TRADACOMS file, specify the version of the file document type.\nNote:\nWhen you select TRADACOMS as Standard the Version field is text box and you can type required value.\nWhen you select TRADACOMS as Standard and Envelop as the Group, the version value in the Version field is auto-populated as 1.",
+                "Group": "Specifies whether the control number is to be used for an interchange (or transmission) header or a group (or batch) header.\nPossible values are:\nAll. If you are adding a control number that is to be used for all group-level documents.\nEnvelop. If you are adding a control number for an interchange-level (or transmission-level) document. This is selected by default.\nCustom. If you are adding a control number for a specific group type.",
+                "Group name": "This field is enabled when you select Custom in the Group field. It specifies the name of the group.\nFor example, for group-level (or batch-level) document that has a specific group type you can provide the following:\nFor non-TRADACOMS documents, provide the name of the group. For example, PO or IN.\nFor TRADACOMS documents, the name of the batch or file type. For example, NVHDR or ORDHDR.",
+                "Mode": "The production mode associated with the interchange or group (or transmission or batch) header for which to use the control number. Possible values are:\nProduction\nTest\nCustom\nNote: For TRADACOMS the only valid value is Production."
+            }
+        },
+        {
+            "ta-adding_control_numbers_1": {
+                "Duplicate detection window": "Indicates a range of numbers that webMethods.io B2B uses to determine whether a number is duplicate or out-of-sequence.\nDefault value is 100.\nThis value should be less than half the difference between the Maximum and Minimum value specified, that is:\nDuplicate detection window < (Maximum-Minimum)/2\nNote: This is not applicable to outbound documents.",
+                "Next control number": "The next control number that you expect for the interchange or group (or transmission or batch) to use.\nDefault value is 1.\nThe value should be as follows:\nMaximum<= Next control number <= Minimum",
+                "Minimum": "The lowest number that the control number can have.\nDefault value is 1.",
+                "Maximum": "The highest number that the control number can have.\nDefault value is 999999.\nThe maximum value that you can specify is 99999999999999.\nIf webMethods.io B2B calculates the next expected control number and that number is greater than the control number maximum, then webMethods.io B2B sets the control number to the value you specify in the Minimum field.",
+                "Increment": "The value that webMethods.io B2B uses to increment the control number to determine the next expected control number.\nDefault value is 1.\nThe increment value should be within the range: Maximum ~ Minimum."
+            }
+        },
+        {
+            "ta-creating_a_general_queue": {
+                "Name": "Defines the name of the queue.",
+                "State": "Defines the state of the queue. The possible values are:\nEnabled. Both queuing and batching is enabled.\nDisabled. Both queuing and batching is disabled.\nDraining. The queuing will be disabled but batching remains enabled for the existing queued transaction.\nSuspended. The queuing is enabled but batching is disabled.",
+                "Delivery service": "Defines the type of delivery service. The possible value is EDI Batch.",
+                "Sender identity": "Defines the values of sender identity. The field contains both sender id qualifier and its value.",
+                "Receiver identity": "Defines the values of receiver identity. The field contains both receiver id qualifier and its value.",
+                "Usage indicator": "The environment to indicate in the envelope headers. The possible values are Production and Test.\nNote: For TRADACOMS, the only valid value is Production.",
+                "Control number": "Select the method for the service to create the control number for the envelope. The possible values are:\nControl number settings. Selects the value already configured under Settings > Control Number, by using the inputs provided in the header category EDI Document Type and Interchange control headers of Queue settings.\nSequentialize. Control number is auto incremented.",
+                "Group control number": "Select the method to create the group control numbers (or TRADACOMS batch transmission references). The possible values are:\nControl number settings. Selects the value already configured under Settings > Control Number, by using the inputs provided in the header category EDI Document Type and Interchange control headers of Queue settings.\nSequentialize. Control number is auto incremented.\nNone. Do not overwrite the group or TRADACOMS batch control number.\n\nNote: If Group control number is left blank, the value of Content control number is used.\n",
+                "Content control number": "Select the method to select the content control numbers. The possible values are:\nControl number settings. Selects the value already configured under Settings > Control Number, by using the inputs provided in the header category EDI Document Type and Interchange control headers of Queue settings.\nSequential. Control number is auto incremented.\nNone. Use the control number from the group or transaction header (or TRADACOMS batch or file header).",
+                "Standard": "The EDI standard to use.\n\nThe possible values are: X12, UNEDIFACT, UCS, VICS, EANCOM, ODETTE, and TRADACOMS.",
+                "Version": "Version of the EDI standard with which the envelope must be created. For example, 4010.\nNote:\nValues depend on the selected document standard.\nFor TRADACOMS, the only valid version is 1.",
+                "One batch queue": "Select the method of operation to batch the document. The possible values are:\nSingle Output. Batch the EDI documents in the queue into a single batch EDI document that contains multiple interchanges or transactions.\nMultiple Output. Batch the EDI documents in the queue into multiple batch EDI documents, each with a single interchange or transactions.",
+                "EDIINT AS2 partner identities": "",
+                "EDIINT AS2 sender identity": "Specify the AS2-From identity to send the document using the AS2 out channel.",
+                "EDIINT AS2 receiver identity": "Specify the AS2-To identity to send the document using the AS2 out channel.",
+                "Create group": "Group related transactions together in the Transactions page. The possible values are True and False.",
+                "Remove empty record": "Select to remove all the empty records from the batched documents. The possible values are True and False.",
+                "Batch max count": "The maximum number of transactions the operation processes at a time from the queued transactions. The remaining transactions are handled in subsequent executions of the operation.\n\nIf no value is provided, or a zero or a negative value is provided, all queued transactions are processed.",
+                "Batch group": "The number of queued documents to be retrieved for processing. If no value is provided, or a zero or a negative value is provided, documents are retrieved one by one.",
+                "Default to TPA": "This option is selected by default. The delimiters specified in the TPA are used in the content generated in the document.\n\nUncheck this option to specify a delimiter each for Record, Field, Sub-field, and Release.",
+                "Record": "Specify a unique record.\n\nIf no value is specified in the input or TPA, the following default values are added:\nFor X12: [ \\n ]\nFor UNEDIFACT: [ ‘ ]",
+                "Field": "Specify a unique field.\n\nIf no value is specified in the input or TPA, the following default values are added:\nFor X12: [ * ]\nFor UNEDIFACT: [ + ]",
+                "Subfield": "Specify a unique sub-field.\n\nIf no value is specified in the input or TPA, the following default values are added:\nFor X12: [ : ]\nFor UNEDIFACT: [ : ]",
+                "Release": "Specify a unique release.\n\nIf no value is specified in the input or TPA, the following default values are added:\nFor X12: [ ]\nFor UNEDIFACT: [ ? ]",
+                "Schedule": "Run type. Indicates the queue execution schedule type. The possible values are:\nRun once\nDate. Select the date and time for the schedule to run.\nFixed interval\nInterval. Specify the interval between each schedule in seconds, minutes, hours, days, or weeks.\nDaily\nTime. Specify the time for schedule.\nStart date. Select a date for the schedule to start.\nEnd date. Select a date for the schedule to end.\nWeekly\nTime. Specify the time for schedule.\nStart date. Select a date for the schedule to start.\nEnd date. Select a date for the schedule to end.\nDays of week. Select the days for the schedule.\nMonthly\nTime. Specify the time for schedule.\nStart date. Select a date for the schedule to start.\nEnd date. Select a date for the schedule to end.\nDays of month. Select the dates of month for the schedule.",
+                "Create a processing rule with Queue for delivery action": "Select this field to create a processing rule upon creation of queue. This rule is used to add transactions into queue. The Sender, Receiver, and all the documents related to the standard and version specified below are used in the processing rule criteria.",
+                "Senders": "Select the list of senders required for the processing rule criteria.",
+                "Receivers": "Select the list of receivers required for the processing rule criteria.",
+                "Documents": "Select the list of documents required for the processing rule criteria.",
+                "Status": "Select the status of the processing rule.\n\nThis field appears if you select Queue for delivery. The possible values are Active and Inactive.",
+                "Position": "Select the position of the processing rule.\n\nThis field appears if you select Queue for delivery. The possible values are First, Last, and Custom. Also select the Position index for the Custom position of the processing rule."
+            }
+        },
+        {
+            "ta-creating_a_partner_specific_queue": {
+                "Queue information": "",
+                "Partner name": "Defines the partner name of the queue.",
+                "State": "Defines the state of the queue. The possible values are:\nEnabled. Both queuing and batching is enabled.\nDisabled. Both queuing and batching is disabled.\nDraining. The queuing will be disabled but batching remains enabled for the existing queued transaction.\nSuspended. The queuing is enabled but batching is disabled.",
+                "Delivery service": "Defines the type of delivery service. The possible value is EDI Batch.",
+                "Sender identity": "Defines the values of sender identity. The field contains both sender id qualifier and its value.",
+                "Receiver identity": "Defines the values of receiver identity. The field contains both receiver id qualifier and its value.",
+                "Usage indicator": "The environment to indicate in the envelope headers. The possible values are Production and Test.\nNote: For TRADACOMS, the only valid value is Production.",
+                "Control number": "Select the method for the service to create the control number for the envelope. The possible values are:\nControl number settings. Selects the value already configured under Settings > Control Number, by using the inputs provided in the header category EDI Document Type and Interchange control headers of Queue settings.\nSequentialize. Control number is auto incremented.",
+                "Group control number": "Select the method to create the group control numbers (or TRADACOMS batch transmission references). The possible values are:\nControl number settings. Selects the value already configured under Settings > Control Number, by using the inputs provided in the header category EDI Document Type and Interchange control headers of Queue settings.\nSequentialize. Control number is auto incremented.\nNone. Do not overwrite the group or TRADACOMS batch control number.\n\nNote: If Group control number is left blank, the value of Content control number is used.\n",
+                "Content control number": "Select the method to select the content control numbers. The possible values are:\nControl number settings. Selects the value already configured under Settings > Control Number, by using the inputs provided in the header category EDI Document Type and Interchange control headers of Queue settings.\nSequential. Control number is auto incremented.\nNone. Use the control number from the group or transaction header (or TRADACOMS batch or file header).",
+                "Standard": "The EDI standard to use.\n\nThe possible values are: X12, UNEDIFACT, UCS, VICS, EANCOM, ODETTE, and TRADACOMS.",
+                "Version": "Version of the EDI standard with which the envelope must be created. For example, 4010.\nNote:\nValues depend on the selected document standard.\nFor TRADACOMS, the only valid version is 1.",
+                "One batch queue": "Select the method of operation to batch the document. The possible values are:\nSingle Output. Batch the EDI documents in the queue into a single batch EDI document that contains multiple interchanges or transactions.\nMultiple Output. Batch the EDI documents in the queue into multiple batch EDI documents, each with a single interchange or transactions.",
+                "EDIINT AS2 sender identity": "Specify the AS2-From identity to send the document using the AS2 out channel.",
+                "EDIINT AS2 receiver identity": "Specify the AS2-To identity to send the document using the AS2 out channel.",
+                "Create group": "Group related transactions together in the Transactions page. The possible values are True and False.",
+                "Remove empty record": "Select to remove all the empty records from the batched documents. The possible values are True and False.",
+                "Batch max count": "The maximum number of transactions the operation processes at a time from the queued transactions. The remaining transactions are handled in subsequent executions of the operation.\n\nIf no value is provided, or a zero or a negative value is provided, all queued transactions are processed.",
+                "Batch group": "The number of queued documents to be retrieved for processing. If no value is provided, or a zero or a negative value is provided, documents are retrieved one by one.",
+                "Default to TPA": "This option is selected by default. The delimiters specified in the TPA are used in the content generated in the document.\n\nUncheck this option to specify a delimiter each for Record, Field, Sub-field, and Release.",
+                "Record": "Specify a unique record.\n\nIf no value is specified in the input or TPA, the following default values are added:\nFor X12: [ \\n ]\nFor UNEDIFACT: [ ‘ ]",
+                "Field": "Specify a unique field.\n\nIf no value is specified in the input or TPA, the following default values are added:\nFor X12: [ * ]\nFor UNEDIFACT: [ + ]",
+                "Subfield": "Specify a unique sub-field.\n\nIf no value is specified in the input or TPA, the following default values are added:\nFor X12: [ : ]\nFor UNEDIFACT: [ : ]",
+                "Release": "Specify a unique release.\n\nIf no value is specified in the input or TPA, the following default values are added:\nFor X12: [ ]\nFor UNEDIFACT: [ ? ]",
+                "Schedule": "Run type. Indicates the queue execution schedule type. The possible values are:\nRun once\nDate. Select the date and time for the schedule to run.\nFixed interval\nInterval. Specify the interval between each schedule in seconds, minutes, hours, days, or weeks.\nDaily\nTime. Specify the time for schedule.\nStart date. Select a date for the schedule to start.\nEnd date. Select a date for the schedule to end.\nWeekly\nTime. Specify the time for schedule.\nStart date. Select a date for the schedule to start.\nEnd date. Select a date for the schedule to end.\nDays of week. Select the days for the schedule.\nMonthly\nTime. Specify the time for schedule.\nStart date. Select a date for the schedule to start.\nEnd date. Select a date for the schedule to end.\nDays of month. Select the dates of month for the schedule.",
+                "Create a processing rule with Queue for delivery action": "Select this field to create a processing rule upon creation of queue. This rule is used to add transactions into queue. The Sender, Receiver, and all the documents related to the standard and version specified below are used in the processing rule criteria.",
+                "Senders": "Select the list of senders required for the processing rule criteria.",
+                "Receivers": "Select the list of receivers required for the processing rule criteria.",
+                "Documents": "Select the list of documents required for the processing rule criteria.",
+                "Status": "Select the status of the processing rule.\n\nThis field appears if you select Queue for delivery. The possible values are Active and Inactive.",
+                "Position": "Select the position of the processing rule.\n\nThis field appears if you select Queue for delivery. The possible values are First, Last, and Custom. Also, select the Position index for the Custom position of the processing rule."
+            }
+        }
+        
+    ]
 ]
