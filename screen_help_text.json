@@ -475,7 +475,6 @@
             "Transport time": "The time (in milliseconds) it took for the task to complete irrespective of the resulting status in the previous attempt."
         }
     },
-    [
         {
             "co-type_of_log": {
                 "Date": "Timestamp when the action was performed on the deployment.",
